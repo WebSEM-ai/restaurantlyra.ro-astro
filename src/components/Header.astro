@@ -11,54 +11,31 @@ const t = translations[locale];
 const otherLocale = locale === 'ro' ? 'hu' : 'ro';
 const currentPath = Astro.url.pathname.replace(/^\/(ro|hu)/, '') || '/';
 
-const navItems = [
-  { label: t.nav.home, href: getLocalePath(locale, '/') },
-  { label: t.nav.menu, href: getLocalePath(locale, '/meniu/') },
-  { label: t.nav.gallery, href: getLocalePath(locale, '/galerie/') },
-  { label: t.nav.events, href: getLocalePath(locale, '/evenimente/') },
-  { label: t.nav.contact, href: getLocalePath(locale, '/contact/') },
+// Main nav items visible in header bar
+const mainNavItems = [
+  { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
+  { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
+  { label: 'Catering', href: getLocalePath(locale, '/evenimente/') },
+  { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },
 ];
 
-const tickerMessages = locale === 'ro' ? [
-  'Restaurant Lyra — Bucătărie tradițională transilvăneană',
-  'Deschis zilnic 10:00 - 23:00 — Te așteptăm!',
-  'Evenimente private, nunți, botezuri și catering',
-  'Terasă exterioară disponibilă în sezon',
-  'Ingrediente locale proaspete și rețete autentice',
-] : [
-  'Restaurant Lyra — Hagyományos erdélyi konyha',
-  'Naponta nyitva 10:00 - 23:00 — Várjuk!',
-  'Magánrendezvények, esküvők, keresztelők és catering',
-  'Kültéri terasz szezonálisan elérhető',
-  'Friss helyi alapanyagok és autentikus receptek',
+// All nav items for hamburger overlay
+const allNavItems = [
+  { label: t.nav.home, href: getLocalePath(locale, '/') },
+  { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
+  { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
+  { label: 'Catering', href: getLocalePath(locale, '/evenimente/') },
+  { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },
+  { label: t.nav.gallery, href: getLocalePath(locale, '/galerie/') },
+  { label: t.nav.contact, href: getLocalePath(locale, '/contact/') },
 ];
 ---
 
-<!-- News Ticker -->
-<div class="fixed top-0 left-0 right-0 z-[60] bg-primary/95 backdrop-blur-sm">
-  <div class="ticker-wrap">
-    <div class="ticker" id="news-ticker">
-      {tickerMessages.map((msg) => (
-        <span class="ticker-item">
-          <span class="ticker-dot"></span>
-          {msg}
-        </span>
-      ))}
-      {tickerMessages.map((msg) => (
-        <span class="ticker-item" aria-hidden="true">
-          <span class="ticker-dot"></span>
-          {msg}
-        </span>
-      ))}
-    </div>
-  </div>
-</div>
-
-<!-- Main Header -->
-<header class="fixed top-[28px] left-0 right-0 z-50 transition-all duration-300" id="main-header">
-  <div class="w-full bg-white/95 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.05)]" id="header-inner">
+<!-- Main Header — transparent, overlays hero -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="main-header">
+  <div class="w-full transition-all duration-500" id="header-inner">
     <div class="w-full px-5 sm:px-8 lg:px-12">
-      <div class="flex items-center justify-between h-[72px]">
+      <div class="flex items-center justify-between h-[80px]">
 
         <!-- Logo -->
         <a href={getLocalePath(locale, '/')} class="flex items-center shrink-0">
@@ -70,13 +47,26 @@ const tickerMessages = locale === 'ro' ? [
           />
         </a>
 
+        <!-- Center Nav (desktop) -->
+        <nav class="hidden lg:flex items-center gap-1" id="main-nav">
+          {mainNavItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link px-4 py-2 text-sm font-medium tracking-wide text-white/85 hover:text-white transition-colors duration-300 rounded-lg hover:bg-white/10"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
         <!-- Right Side Actions -->
-        <div class="flex items-center gap-3 sm:gap-5">
+        <div class="flex items-center gap-3 sm:gap-4">
 
           <!-- Language Switcher -->
           <a
             href={getLocalePath(otherLocale, currentPath)}
-            class="hidden sm:flex items-center gap-1.5 text-xs font-semibold tracking-wider text-dark/50 hover:text-primary transition-colors uppercase"
+            class="hidden sm:flex items-center gap-1.5 text-xs font-semibold tracking-wider transition-colors uppercase"
+            id="lang-switch"
           >
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z" />
@@ -99,7 +89,7 @@ const tickerMessages = locale === 'ro' ? [
           <!-- Hamburger Menu Button -->
           <button
             id="hamburger-btn"
-            class="relative flex items-center justify-center w-11 h-11 rounded-full border border-dark/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+            class="relative flex items-center justify-center w-11 h-11 rounded-full border transition-all duration-300"
             aria-label="Toggle menu"
           >
             <div class="hamburger-lines" id="hamburger-lines">
@@ -122,7 +112,7 @@ const tickerMessages = locale === 'ro' ? [
     <!-- Nav Links -->
     <nav class="flex-1 flex flex-col justify-center">
       <ul class="space-y-1">
-        {navItems.map((item, i) => (
+        {allNavItems.map((item, i) => (
           <li class="nav-reveal" style={`--delay: ${i * 0.06}s`}>
             <a
               href={item.href}
@@ -168,53 +158,69 @@ const tickerMessages = locale === 'ro' ? [
   </div>
 </div>
 
-<!-- Spacer for fixed header -->
-<div class="h-[100px]"></div>
-
 <style>
-  .ticker-wrap {
-    overflow: hidden;
-    height: 28px;
-    display: flex;
-    align-items: center;
+  /* --- Transparent state (top of page) --- */
+  #main-header:not(.header-scrolled) #header-inner {
+    background: transparent;
   }
 
-  .ticker {
-    display: flex;
-    white-space: nowrap;
-    animation: ticker-scroll 45s linear infinite;
+  #main-header:not(.header-scrolled) #hamburger-btn {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: white;
   }
 
-  .ticker-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 0 2.5rem;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.85);
-    font-family: var(--font-body);
+  #main-header:not(.header-scrolled) #hamburger-btn:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
   }
 
-  .ticker-dot {
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: rgba(200, 149, 108, 0.7);
-    flex-shrink: 0;
+  #main-header:not(.header-scrolled) #lang-switch {
+    color: rgba(255, 255, 255, 0.6);
   }
 
-  @keyframes ticker-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  #main-header:not(.header-scrolled) #lang-switch:hover {
+    color: white;
   }
 
-  .ticker-wrap:hover .ticker {
-    animation-play-state: paused;
+  /* --- Scrolled state (solid bg) --- */
+  .header-scrolled #header-inner {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
   }
 
+  .header-scrolled .nav-link {
+    color: rgba(15, 31, 23, 0.7) !important;
+  }
+
+  .header-scrolled .nav-link:hover {
+    color: rgba(15, 31, 23, 1) !important;
+    background: rgba(15, 31, 23, 0.05) !important;
+  }
+
+  .header-scrolled #hamburger-btn {
+    border-color: rgba(15, 31, 23, 0.15);
+    color: var(--color-dark);
+  }
+
+  .header-scrolled #hamburger-btn:hover {
+    border-color: rgba(26, 58, 42, 0.3);
+    background: rgba(26, 58, 42, 0.05);
+  }
+
+  .header-scrolled #lang-switch {
+    color: rgba(15, 31, 23, 0.45);
+  }
+
+  .header-scrolled #lang-switch:hover {
+    color: var(--color-primary);
+  }
+
+  .header-scrolled #header-logo {
+    height: 2.75rem;
+  }
+
+  /* --- Hamburger --- */
   .hamburger-lines {
     display: flex;
     flex-direction: column;
@@ -246,6 +252,7 @@ const tickerMessages = locale === 'ro' ? [
     transform: translateY(-7px) rotate(-45deg);
   }
 
+  /* --- Nav overlay reveal --- */
   .nav-reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -258,17 +265,10 @@ const tickerMessages = locale === 'ro' ? [
     transform: translateY(0);
   }
 
+  /* --- Shimmer --- */
   @keyframes shimmer {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
-  }
-
-  .header-scrolled #header-inner {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  }
-
-  .header-scrolled #header-logo {
-    height: 2.75rem;
   }
 </style>
 
@@ -308,9 +308,9 @@ const tickerMessages = locale === 'ro' ? [
     if (e.key === 'Escape' && isOpen) toggleMenu();
   });
 
+  // Scroll: transparent → solid
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll > 50) {
+    if (window.scrollY > 80) {
       mainHeader?.classList.add('header-scrolled');
     } else {
       mainHeader?.classList.remove('header-scrolled');
