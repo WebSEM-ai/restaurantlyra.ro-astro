@@ -21,7 +21,7 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
 ---
 
 <BaseLayout title={siteConfig.tagline} locale={locale}>
-  <!-- Hero -->
+  <!-- Hero Slider -->
   <Hero
     title={siteConfig.tagline}
     subtitle={t.home.heroSubtitle}
@@ -29,7 +29,13 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
     ctaHref="/contact/"
     secondaryCtaText={t.common.viewMenu}
     secondaryCtaHref="/meniu/"
-    backgroundImage="/images/exterior/exterior-1.webp"
+    slides={[
+      { image: '/images/exterior/exterior-1.webp', title: 'Savoare transilvăneană autentică', subtitle: 'Restaurant cu bucătărie tradițională în Târgu Mureș' },
+      { image: '/images/hero/restaurant.webp', title: 'Bucătărie tradițională românească', subtitle: 'Preparate autentice cu ingrediente locale proaspete' },
+      { image: '/images/hero/catering.webp', title: 'Catering pentru orice ocazie', subtitle: 'Meniuri personalizate și prezentare elegantă' },
+      { image: '/images/hero/evenimente.webp', title: 'Evenimente de neuitat', subtitle: 'Nunți, botezuri, aniversări și evenimente corporate' },
+      { image: '/images/hero/terasa.webp', title: 'Terasă cu atmosferă unică', subtitle: 'Relaxare și savoare în aer liber' },
+    ]}
   />
 
   <!-- Intro / Our Story -->

@@ -28,7 +28,13 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
     ctaHref="/hu/contact/"
     secondaryCtaText={t.common.viewMenu}
     secondaryCtaHref="/hu/meniu/"
-    backgroundImage="/images/exterior/exterior-1.webp"
+    slides={[
+      { image: '/images/exterior/exterior-1.webp', title: 'Autentikus erdélyi ízek', subtitle: 'Hagyományos konyhával rendelkező étterem Marosvásárhelyen' },
+      { image: '/images/hero/restaurant.webp', title: 'Hagyományos román konyha', subtitle: 'Autentikus receptek friss helyi alapanyagokkal' },
+      { image: '/images/hero/catering.webp', title: 'Catering minden alkalomra', subtitle: 'Személyre szabott menük elegáns tálalással' },
+      { image: '/images/hero/evenimente.webp', title: 'Felejthetetlen rendezvények', subtitle: 'Esküvők, keresztelők, évfordulók és céges események' },
+      { image: '/images/hero/terasa.webp', title: 'Egyedülálló terasz', subtitle: 'Pihenés és ízélmény a szabadban' },
+    ]}
   />
 
   <section class="py-20 bg-white">

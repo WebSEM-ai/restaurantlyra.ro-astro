@@ -1,6 +1,12 @@
 ---
 import { siteConfig } from '../../site.config';
 
+interface Slide {
+  image: string;
+  title: string;
+  subtitle?: string;
+}
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -12,6 +18,7 @@ interface Props {
   backgroundVideo?: string;
   overlay?: boolean;
   compact?: boolean;
+  slides?: Slide[];
 }
 
 const {
@@ -25,48 +32,121 @@ const {
   backgroundVideo,
   overlay = true,
   compact = false,
+  slides,
 } = Astro.props;
+
+const isSlider = slides && slides.length > 1;
 ---
 
-<section class:list={['relative flex items-center justify-center text-white', compact ? 'min-h-[50vh]' : 'min-h-screen']}>
-  <!-- Background -->
-  <div class="absolute inset-0">
-    {backgroundVideo ? (
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        class="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src={backgroundVideo} type="video/mp4" />
-      </video>
-    ) : (
-      <div
-        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={`background-image: url('${backgroundImage}')`}
-      />
-    )}
-    {overlay && (
-      backgroundVideo ? (
-        <div class="absolute inset-0 bg-gradient-to-b from-dark/30 via-transparent to-dark/50" />
+<section class:list={['relative flex items-center justify-center text-white overflow-hidden', compact ? 'min-h-[50vh]' : 'min-h-screen']}>
+
+  {isSlider ? (
+    <!-- Slider backgrounds -->
+    <div class="absolute inset-0" id="hero-slider">
+      {slides.map((slide, i) => (
+        <div
+          class:list={['hero-slide absolute inset-0 transition-opacity duration-1000', i === 0 ? 'opacity-100' : 'opacity-0']}
+          data-index={i}
+        >
+          <div
+            class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={`background-image: url('${slide.image}')`}
+          />
+          <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark/70" />
+        </div>
+      ))}
+    </div>
+
+    <!-- Slider arrows -->
+    <button
+      id="hero-prev"
+      class="absolute left-5 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/15 hover:border-white/40 transition-all duration-300 cursor-pointer group"
+      aria-label="Previous slide"
+    >
+      <svg class="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+    <button
+      id="hero-next"
+      class="absolute right-5 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm hover:bg-white/15 hover:border-white/40 transition-all duration-300 cursor-pointer group"
+      aria-label="Next slide"
+    >
+      <svg class="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2.5" id="hero-dots">
+      {slides.map((_, i) => (
+        <button
+          class:list={['hero-dot w-2 h-2 rounded-full transition-all duration-500 cursor-pointer', i === 0 ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60']}
+          data-index={i}
+          aria-label={`Slide ${i + 1}`}
+        />
+      ))}
+    </div>
+  ) : (
+    <!-- Single background -->
+    <div class="absolute inset-0">
+      {backgroundVideo ? (
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          class="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
       ) : (
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={`background-image: url('${backgroundImage}')`}
+        />
+      )}
+      {overlay && (
         <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark/70" />
-      )
-    )}
-  </div>
+      )}
+    </div>
+  )}
 
   <!-- Content -->
   <div class="relative z-10 text-center max-w-4xl mx-auto px-4 py-20">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 drop-shadow-lg">
-      {title}
-    </h1>
-    {subtitle && (
-      <p class="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-        {subtitle}
-      </p>
+    {isSlider ? (
+      <!-- Slider titles -->
+      <div class="relative" id="hero-titles">
+        {slides.map((slide, i) => (
+          <div
+            class:list={['hero-title-slide transition-all duration-700', i === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute inset-0']}
+            data-index={i}
+          >
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 drop-shadow-lg">
+              {slide.title}
+            </h1>
+            {slide.subtitle && (
+              <p class="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                {slide.subtitle}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    ) : (
+      <>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 drop-shadow-lg">
+          {title}
+        </h1>
+        {subtitle && (
+          <p class="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            {subtitle}
+          </p>
+        )}
+      </>
     )}
+
     {(ctaText || secondaryCtaText) && (
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         {ctaText && (
@@ -89,8 +169,8 @@ const {
     )}
   </div>
 
-  <!-- Scroll indicator -->
-  {!compact && (
+  <!-- Scroll indicator (only non-slider, non-compact) -->
+  {!compact && !isSlider && (
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
       <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -98,3 +178,96 @@ const {
     </div>
   )}
 </section>
+
+{isSlider && (
+  <script>
+    const slides = document.querySelectorAll('.hero-slide');
+    const titles = document.querySelectorAll('.hero-title-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+    const total = slides.length;
+    let current = 0;
+    let interval: ReturnType<typeof setInterval>;
+
+    function goTo(index: number) {
+      // Update backgrounds
+      slides.forEach((s, i) => {
+        s.classList.toggle('opacity-100', i === index);
+        s.classList.toggle('opacity-0', i !== index);
+      });
+
+      // Update titles
+      titles.forEach((t, i) => {
+        if (i === index) {
+          t.classList.remove('opacity-0', 'translate-y-4', 'absolute', 'inset-0');
+          t.classList.add('opacity-100', 'translate-y-0');
+        } else {
+          t.classList.remove('opacity-100', 'translate-y-0');
+          t.classList.add('opacity-0', 'translate-y-4', 'absolute', 'inset-0');
+        }
+      });
+
+      // Update dots
+      dots.forEach((d, i) => {
+        if (i === index) {
+          d.classList.remove('bg-white/40', 'hover:bg-white/60');
+          d.classList.add('bg-white', 'w-6');
+        } else {
+          d.classList.remove('bg-white', 'w-6');
+          d.classList.add('bg-white/40', 'hover:bg-white/60');
+        }
+      });
+
+      current = index;
+    }
+
+    function next() {
+      goTo((current + 1) % total);
+    }
+
+    function prev() {
+      goTo((current - 1 + total) % total);
+    }
+
+    function startAutoplay() {
+      interval = setInterval(next, 6000);
+    }
+
+    function resetAutoplay() {
+      clearInterval(interval);
+      startAutoplay();
+    }
+
+    nextBtn?.addEventListener('click', () => { next(); resetAutoplay(); });
+    prevBtn?.addEventListener('click', () => { prev(); resetAutoplay(); });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const i = parseInt((dot as HTMLElement).dataset.index!);
+        goTo(i);
+        resetAutoplay();
+      });
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
+      if (e.key === 'ArrowRight') { next(); resetAutoplay(); }
+    });
+
+    // Touch swipe
+    let touchStartX = 0;
+    const slider = document.getElementById('hero-slider')?.parentElement;
+    slider?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    slider?.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        diff > 0 ? next() : prev();
+        resetAutoplay();
+      }
+    }, { passive: true });
+
+    startAutoplay();
+  </script>
+)}
