@@ -1,0 +1,72 @@
+---
+import { translations, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'ro' } = Astro.props;
+const t = translations[locale];
+---
+
+<form
+  action="https://formspree.io/f/YOUR_FORM_ID"
+  method="POST"
+  class="space-y-6"
+>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label for="name" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.name} *</label>
+      <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition" />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.email} *</label>
+      <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition" />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label for="phone" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.phone} *</label>
+      <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition" />
+    </div>
+    <div>
+      <label for="guests" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.guests}</label>
+      <input type="number" id="guests" name="guests" min="1" max="100" class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition" />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <div>
+      <label for="date" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.date}</label>
+      <input type="date" id="date" name="date" class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition" />
+    </div>
+    <div>
+      <label for="time" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.time}</label>
+      <input type="time" id="time" name="time" class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition" />
+    </div>
+    <div>
+      <label for="event-type" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.eventType}</label>
+      <select id="event-type" name="event_type" class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition bg-white">
+        <option value="">{t.contact.form.selectEvent}</option>
+        <option value="dinner">{t.contact.form.dinner}</option>
+        <option value="birthday">{t.contact.form.birthday}</option>
+        <option value="corporate">{t.contact.form.corporate}</option>
+        <option value="wedding">{t.contact.form.wedding}</option>
+        <option value="other">{t.contact.form.other}</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label for="message" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.message}</label>
+    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-dark/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition resize-y"></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="w-full sm:w-auto px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors text-lg cursor-pointer"
+  >
+    {t.contact.form.submit}
+  </button>
+</form>

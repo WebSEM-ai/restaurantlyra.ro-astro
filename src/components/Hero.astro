@@ -1,0 +1,100 @@
+---
+import { siteConfig } from '../../site.config';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  backgroundImage?: string;
+  backgroundVideo?: string;
+  overlay?: boolean;
+  compact?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  ctaText,
+  ctaHref = '/contact/',
+  secondaryCtaText,
+  secondaryCtaHref,
+  backgroundImage = '/images/hero.webp',
+  backgroundVideo,
+  overlay = true,
+  compact = false,
+} = Astro.props;
+---
+
+<section class:list={['relative flex items-center justify-center text-white', compact ? 'min-h-[50vh]' : 'min-h-screen']}>
+  <!-- Background -->
+  <div class="absolute inset-0">
+    {backgroundVideo ? (
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+      </video>
+    ) : (
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={`background-image: url('${backgroundImage}')`}
+      />
+    )}
+    {overlay && (
+      backgroundVideo ? (
+        <div class="absolute inset-0 bg-gradient-to-b from-dark/30 via-transparent to-dark/50" />
+      ) : (
+        <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark/70" />
+      )
+    )}
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center max-w-4xl mx-auto px-4 py-20">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 drop-shadow-lg">
+      {title}
+    </h1>
+    {subtitle && (
+      <p class="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+        {subtitle}
+      </p>
+    )}
+    {(ctaText || secondaryCtaText) && (
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        {ctaText && (
+          <a
+            href={ctaHref}
+            class="inline-flex items-center justify-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-all text-lg shadow-lg hover:shadow-xl"
+          >
+            {ctaText}
+          </a>
+        )}
+        {secondaryCtaText && secondaryCtaHref && (
+          <a
+            href={secondaryCtaHref}
+            class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg border border-white/30 hover:bg-white/20 transition-all text-lg"
+          >
+            {secondaryCtaText}
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+
+  <!-- Scroll indicator -->
+  {!compact && (
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  )}
+</section>

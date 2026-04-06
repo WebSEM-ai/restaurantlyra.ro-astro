@@ -1,0 +1,319 @@
+---
+import { siteConfig } from '../../site.config';
+import { translations, type Locale, getLocalePath } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'ro' } = Astro.props;
+const t = translations[locale];
+const otherLocale = locale === 'ro' ? 'hu' : 'ro';
+const currentPath = Astro.url.pathname.replace(/^\/(ro|hu)/, '') || '/';
+
+const navItems = [
+  { label: t.nav.home, href: getLocalePath(locale, '/') },
+  { label: t.nav.menu, href: getLocalePath(locale, '/meniu/') },
+  { label: t.nav.gallery, href: getLocalePath(locale, '/galerie/') },
+  { label: t.nav.events, href: getLocalePath(locale, '/evenimente/') },
+  { label: t.nav.contact, href: getLocalePath(locale, '/contact/') },
+];
+
+const tickerMessages = locale === 'ro' ? [
+  'Restaurant Lyra — Bucătărie tradițională transilvăneană',
+  'Deschis zilnic 10:00 - 23:00 — Te așteptăm!',
+  'Evenimente private, nunți, botezuri și catering',
+  'Terasă exterioară disponibilă în sezon',
+  'Ingrediente locale proaspete și rețete autentice',
+] : [
+  'Restaurant Lyra — Hagyományos erdélyi konyha',
+  'Naponta nyitva 10:00 - 23:00 — Várjuk!',
+  'Magánrendezvények, esküvők, keresztelők és catering',
+  'Kültéri terasz szezonálisan elérhető',
+  'Friss helyi alapanyagok és autentikus receptek',
+];
+---
+
+<!-- News Ticker -->
+<div class="fixed top-0 left-0 right-0 z-[60] bg-primary/95 backdrop-blur-sm">
+  <div class="ticker-wrap">
+    <div class="ticker" id="news-ticker">
+      {tickerMessages.map((msg) => (
+        <span class="ticker-item">
+          <span class="ticker-dot"></span>
+          {msg}
+        </span>
+      ))}
+      {tickerMessages.map((msg) => (
+        <span class="ticker-item" aria-hidden="true">
+          <span class="ticker-dot"></span>
+          {msg}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header class="fixed top-[28px] left-0 right-0 z-50 transition-all duration-300" id="main-header">
+  <div class="w-full bg-white/95 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.05)]" id="header-inner">
+    <div class="w-full px-5 sm:px-8 lg:px-12">
+      <div class="flex items-center justify-between h-[72px]">
+
+        <!-- Logo -->
+        <a href={getLocalePath(locale, '/')} class="flex items-center shrink-0">
+          <img
+            src="/images/logo-lyra.png"
+            alt={siteConfig.name}
+            class="h-14 sm:h-16 w-auto transition-all duration-300"
+            id="header-logo"
+          />
+        </a>
+
+        <!-- Right Side Actions -->
+        <div class="flex items-center gap-3 sm:gap-5">
+
+          <!-- Language Switcher -->
+          <a
+            href={getLocalePath(otherLocale, currentPath)}
+            class="hidden sm:flex items-center gap-1.5 text-xs font-semibold tracking-wider text-dark/50 hover:text-primary transition-colors uppercase"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z" />
+            </svg>
+            {otherLocale}
+          </a>
+
+          <!-- Reserve CTA -->
+          <a
+            href={getLocalePath(locale, '/contact/')}
+            class="group relative inline-flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3 bg-secondary text-white text-xs sm:text-sm font-semibold tracking-wide rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_4px_20px_rgba(200,149,108,0.4)] hover:scale-[1.02]"
+          >
+            <span class="relative z-10">{t.common.reserveTable}</span>
+            <svg class="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="absolute inset-0 bg-gradient-to-r from-secondary via-[#b8855c] to-secondary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </a>
+
+          <!-- Hamburger Menu Button -->
+          <button
+            id="hamburger-btn"
+            class="relative flex items-center justify-center w-11 h-11 rounded-full border border-dark/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+            aria-label="Toggle menu"
+          >
+            <div class="hamburger-lines" id="hamburger-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Fullscreen Navigation Overlay -->
+<div id="nav-overlay" class="fixed inset-0 z-[55] pointer-events-none opacity-0 transition-opacity duration-500">
+  <div class="absolute inset-0 bg-primary/98 backdrop-blur-xl"></div>
+  <div class="relative z-10 flex flex-col h-full pt-[120px] pb-10 px-8 sm:px-16 lg:px-24 overflow-y-auto">
+
+    <!-- Nav Links -->
+    <nav class="flex-1 flex flex-col justify-center">
+      <ul class="space-y-1">
+        {navItems.map((item, i) => (
+          <li class="nav-reveal" style={`--delay: ${i * 0.06}s`}>
+            <a
+              href={item.href}
+              class="group flex items-center gap-4 py-3 sm:py-4"
+            >
+              <span class="text-secondary/40 text-xs font-mono tracking-wider">0{i + 1}</span>
+              <span class="text-2xl sm:text-4xl lg:text-5xl font-heading font-bold text-white/90 group-hover:text-secondary transition-colors duration-300">
+                {item.label}
+              </span>
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-secondary/0 group-hover:text-secondary group-hover:translate-x-1 transition-all duration-300 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Bottom Bar -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-8 border-t border-white/10">
+      <div class="flex items-center gap-6">
+        <a
+          href={getLocalePath(otherLocale, currentPath)}
+          class="text-sm font-medium text-white/50 hover:text-white transition-colors uppercase tracking-wider"
+        >
+          {otherLocale === 'hu' ? 'Magyar' : 'Română'}
+        </a>
+        <a href={`tel:${siteConfig.contact.phone}`} class="text-sm text-white/50 hover:text-white transition-colors">
+          {siteConfig.contact.phone}
+        </a>
+      </div>
+
+      <a
+        href={getLocalePath(locale, '/contact/')}
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-secondary text-white text-sm font-semibold tracking-wide rounded-full hover:bg-secondary/90 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(200,149,108,0.3)]"
+      >
+        {t.common.reserveTable}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Spacer for fixed header -->
+<div class="h-[100px]"></div>
+
+<style>
+  .ticker-wrap {
+    overflow: hidden;
+    height: 28px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker-scroll 45s linear infinite;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 2.5rem;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-body);
+  }
+
+  .ticker-dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(200, 149, 108, 0.7);
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-wrap:hover .ticker {
+    animation-play-state: paused;
+  }
+
+  .hamburger-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 20px;
+  }
+
+  .hamburger-lines span {
+    display: block;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  .hamburger-lines span:nth-child(1) { width: 100%; }
+  .hamburger-lines span:nth-child(2) { width: 66%; margin-left: auto; }
+  .hamburger-lines span:nth-child(3) { width: 100%; }
+
+  .hamburger-active .hamburger-lines span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger-active .hamburger-lines span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .hamburger-active .hamburger-lines span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: var(--delay, 0s);
+  }
+
+  .nav-open .nav-reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .header-scrolled #header-inner {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .header-scrolled #header-logo {
+    height: 2.75rem;
+  }
+</style>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navOverlay = document.getElementById('nav-overlay');
+  const mainHeader = document.getElementById('main-header');
+  let isOpen = false;
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+
+    if (isOpen) {
+      navOverlay?.classList.remove('pointer-events-none', 'opacity-0');
+      navOverlay?.classList.add('pointer-events-auto', 'opacity-100');
+      hamburgerBtn?.classList.add('hamburger-active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => navOverlay?.classList.add('nav-open'), 50);
+    } else {
+      navOverlay?.classList.remove('nav-open');
+      navOverlay?.classList.add('pointer-events-none', 'opacity-0');
+      navOverlay?.classList.remove('pointer-events-auto', 'opacity-100');
+      hamburgerBtn?.classList.remove('hamburger-active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  hamburgerBtn?.addEventListener('click', toggleMenu);
+
+  navOverlay?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) toggleMenu();
+  });
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      mainHeader?.classList.add('header-scrolled');
+    } else {
+      mainHeader?.classList.remove('header-scrolled');
+    }
+  });
+</script>

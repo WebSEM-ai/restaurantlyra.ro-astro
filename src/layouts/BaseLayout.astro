@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { siteConfig } from '../../site.config';
+import type { Locale } from '../i18n/translations';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  locale?: Locale;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  ogImage = siteConfig.seo.ogImage,
+  locale = siteConfig.locales.default,
+  canonicalUrl,
+} = Astro.props;
+
+const fullTitle = siteConfig.seo.titleTemplate.replace('%s', title);
+const canonical = canonicalUrl || Astro.url.href;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <title>{fullTitle}</title>
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content={locale === 'hu' ? 'hu_HU' : 'ro_RO'} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Alternate languages -->
+    {siteConfig.locales.available.map((lang) => (
+      <link rel="alternate" hreflang={lang} href={`https://${siteConfig.domain}${lang === siteConfig.locales.default ? '' : `/${lang}`}${Astro.url.pathname.replace(/^\/(ro|hu)/, '')}`} />
+    ))}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <SchemaOrg locale={locale} />
+    <Analytics />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header locale={locale} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <WhatsAppButton locale={locale} />
+    <CookieConsent locale={locale} />
+
+    <!-- Scroll to top -->
+    <button
+      id="scroll-top"
+      class="fixed bottom-6 right-6 z-50 hidden w-12 h-12 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-all cursor-pointer"
+      aria-label="Scroll to top"
+    >
+      <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+
+    <script>
+      const btn = document.getElementById('scroll-top');
+      window.addEventListener('scroll', () => {
+        btn?.classList.toggle('hidden', window.scrollY < 400);
+      });
+      btn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+  </body>
+</html>

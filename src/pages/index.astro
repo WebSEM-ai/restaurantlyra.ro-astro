@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Features from '../components/Features.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { siteConfig } from '../../site.config';
+import { translations } from '../i18n/translations';
+
+const locale = 'ro';
+const t = translations[locale];
+
+const testimonials = [
+  { name: 'Maria P.', text: 'Mâncare excelentă! Preparatele tradiționale sunt absolut delicioase, iar atmosfera este caldă și primitoare. Am revenit de mai multe ori și nu am fost dezamăgiți niciodată.', rating: 5, source: 'Google' },
+  { name: 'Andrei D.', text: 'Am organizat o petrecere privată aici și totul a fost perfect. Meniul a fost personalizat, serviciul impecabil. Recomand cu căldură!', rating: 5, source: 'Facebook' },
+  { name: 'Elena M.', text: 'Cel mai bun restaurant tradițional din Târgu Mureș. Ciorbele sunt fenomenale, iar sarmale ca la mama acasă. Terasa este un bonus superb vara.', rating: 5, source: 'TripAdvisor' },
+];
+
+const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
+---
+
+<BaseLayout title={siteConfig.tagline} locale={locale}>
+  <!-- Hero -->
+  <Hero
+    title={siteConfig.tagline}
+    subtitle={t.home.heroSubtitle}
+    ctaText={t.common.reserveTable}
+    ctaHref="/contact/"
+    secondaryCtaText={t.common.viewMenu}
+    secondaryCtaHref="/meniu/"
+    backgroundImage="/images/exterior/exterior-1.webp"
+  />
+
+  <!-- Intro / Our Story -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mb-6">
+          {t.home.planVisit}
+        </h2>
+        <p class="text-lg text-dark/60 leading-relaxed mb-8">
+          {t.home.intro}
+        </p>
+        <a
+          href="/meniu/"
+          class="inline-flex items-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg"
+        >
+          {t.common.viewMenu}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 bg-light">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-heading font-bold text-dark">{t.home.features}</h2>
+        <div class="mt-4 w-20 h-1 bg-secondary rounded mx-auto" />
+      </div>
+      <Features locale={locale} />
+    </div>
+  </section>
+
+  <!-- Schedule & Info -->
+  <section class="py-20 bg-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-4">{t.common.openHours}</h2>
+      <div class="mt-8 flex flex-col sm:flex-row gap-8 justify-center text-white/80">
+        <div>
+          <p class="font-semibold text-secondary">{siteConfig.hours.days}</p>
+          <p class="text-2xl font-heading font-bold mt-2">{siteConfig.hours.open}</p>
+        </div>
+        <div class="hidden sm:block w-px bg-white/20"></div>
+        <div>
+          <p class="font-semibold text-secondary">{locale === 'hu' ? 'Konyha' : 'Bucătărie'}</p>
+          <p class="text-2xl font-heading font-bold mt-2">{siteConfig.hours.kitchen}</p>
+        </div>
+      </div>
+      <div class="mt-10">
+        <a href="/contact/" class="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg">
+          {t.common.reserveTable}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Preview -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title={t.home.galleryPreview} />
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {previewImages.map((img) => (
+          <div class="aspect-[4/3] rounded-xl overflow-hidden group">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/galerie/" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors">
+          {t.common.viewGallery}
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Preview -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/catering/catering-1.webp')"></div>
+    <div class="absolute inset-0 bg-dark/80"></div>
+    <div class="relative z-10 text-center px-5">
+      <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">
+        {t.home.eventsPreview}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white mt-3 mb-4">
+        {t.events.title}
+      </h2>
+      <p class="text-white/60 mb-8 max-w-lg mx-auto">
+        {t.events.subtitle}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/evenimente/"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-all duration-300 text-lg"
+        >
+          {t.common.moreDetails}
+        </a>
+        <a
+          href="/contact/"
+          class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 text-lg"
+        >
+          {t.common.contactUs}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <Testimonials
+    title={locale === 'hu' ? 'Vendégeink Véleménye' : 'Ce Spun Clienții Noștri'}
+    testimonials={testimonials}
+    locale={locale}
+  />
+
+  <!-- CTA Section -->
+  <CTABanner
+    title={t.home.cta}
+    primaryText={t.common.reserveTable}
+    secondaryText={t.common.contactUs}
+    secondaryHref="/contact/"
+  />
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import { siteConfig } from '../../site.config';
+import type { Locale } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'ro' } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': siteConfig.seo.schemaType,
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: `https://${siteConfig.domain}`,
+  telephone: siteConfig.contact.phone,
+  email: siteConfig.contact.email,
+  servesCuisine: ['Romanian', 'Transylvanian'],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Str. Exemplu nr. 1',
+    addressLocality: 'Târgu Mureș',
+    addressRegion: 'Mureș',
+    postalCode: '540000',
+    addressCountry: 'RO',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.contact.coordinates.lat,
+    longitude: siteConfig.contact.coordinates.lng,
+  },
+  image: `https://${siteConfig.domain}${siteConfig.seo.ogImage}`,
+  openingHours: 'Mo-Su 10:00-23:00',
+  priceRange: '$$',
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'WiFi Gratuit', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Parcare Gratuită', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Terasă', value: true },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

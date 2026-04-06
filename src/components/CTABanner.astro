@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+  primaryText?: string;
+  primaryHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+  variant?: 'primary' | 'dark';
+}
+
+const {
+  title,
+  primaryText,
+  primaryHref = '/contact/',
+  secondaryText,
+  secondaryHref,
+  variant = 'primary',
+} = Astro.props;
+
+const bgClass = variant === 'dark' ? 'bg-dark' : 'bg-primary';
+---
+
+<section class={`py-16 ${bgClass} text-white text-center`}>
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-8">{title}</h2>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      {primaryText && (
+        <a
+          href={primaryHref}
+          class="inline-flex items-center justify-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg"
+        >
+          {primaryText}
+        </a>
+      )}
+      {secondaryText && secondaryHref && (
+        <a
+          href={secondaryHref}
+          class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-lg border border-white/30 hover:bg-white/20 transition-colors text-lg"
+        >
+          {secondaryText}
+        </a>
+      )}
+    </div>
+  </div>
+</section>

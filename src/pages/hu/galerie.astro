@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Gallery from '../../components/Gallery.astro';
+import { siteConfig } from '../../../site.config';
+import { translations } from '../../i18n/translations';
+
+const locale = 'hu';
+const t = translations[locale];
+---
+
+<BaseLayout title={t.gallery.title} locale={locale}>
+  <Hero title={t.gallery.heroTitle} subtitle={t.gallery.subtitle} backgroundImage="/images/interior/interior-3.webp" compact />
+
+  <section class="py-20 bg-white">
+    <div class="w-full px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">{t.gallery.interior}</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">A Belső Tér</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+      <Gallery images={siteConfig.galleryImages.interior} columns={3} />
+    </div>
+  </section>
+
+  <section class="py-20 bg-light/50">
+    <div class="w-full px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">{t.gallery.exterior}</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Külső Tér és Terasz</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+      <Gallery images={siteConfig.galleryImages.exterior} columns={4} />
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="w-full px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">{t.gallery.events}</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Catering és Rendezvények</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+      <Gallery images={[...siteConfig.galleryImages.catering, ...siteConfig.galleryImages.diverse]} columns={3} />
+    </div>
+  </section>
+</BaseLayout>

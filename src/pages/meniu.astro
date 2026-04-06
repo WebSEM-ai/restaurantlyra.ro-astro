@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import { siteConfig } from '../../site.config';
+import { translations } from '../i18n/translations';
+
+const locale = 'ro';
+const t = translations[locale];
+---
+
+<BaseLayout title={t.menu.title} locale={locale}>
+  <Hero
+    title={t.menu.heroTitle}
+    subtitle={t.menu.subtitle}
+    backgroundImage="/images/diverse/diverse-1.webp"
+    compact
+  />
+
+  <!-- Menu Content -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Aperitive -->
+      <div class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-heading font-bold text-dark">{t.menu.appetizers}</h2>
+          <div class="flex-1 h-px bg-dark/10"></div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Platou tradițional Lyra</p>
+              <p class="text-sm text-dark/50">Brânzeturi locale, mezeluri de casă, murături, zacuscă</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Bruschete cu legume coapte</p>
+              <p class="text-sm text-dark/50">Pâine prăjită, legume de sezon, brânză de capră</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Salată tradițională cu brânză</p>
+              <p class="text-sm text-dark/50">Mix de verdeață, roșii, castraveți, brânză telemea</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supe și Ciorbe -->
+      <div class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-heading font-bold text-dark">{t.menu.soups}</h2>
+          <div class="flex-1 h-px bg-dark/10"></div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Ciorbă de burtă</p>
+              <p class="text-sm text-dark/50">Rețetă tradițională cu smântână și ardei iute</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Ciorbă de perișoare</p>
+              <p class="text-sm text-dark/50">Cu carne de porc, legume proaspete și leuștean</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Supă de pui cu tăiței</p>
+              <p class="text-sm text-dark/50">Tăiței de casă, legume, verdețuri proaspete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feluri Principale -->
+      <div class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-heading font-bold text-dark">{t.menu.mainCourse}</h2>
+          <div class="flex-1 h-px bg-dark/10"></div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Sarmale tradiționale</p>
+              <p class="text-sm text-dark/50">În frunze de varză, cu smântână și mămăligă</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Tocăniță de vită</p>
+              <p class="text-sm text-dark/50">Carne fragedă, sos de legume, servită cu mămăligă</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Mici la grătar</p>
+              <p class="text-sm text-dark/50">Mititei tradiționali cu muștar și pâine proaspătă</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Pastrav la grătar</p>
+              <p class="text-sm text-dark/50">Pește proaspăt cu garnitură de legume la grătar</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Cotlet de porc</p>
+              <p class="text-sm text-dark/50">La grătar, cu cartofi țărănești și salată</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deserturi -->
+      <div class="mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0A1.75 1.75 0 013 15.546" />
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-heading font-bold text-dark">{t.menu.desserts}</h2>
+          <div class="flex-1 h-px bg-dark/10"></div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Papanași cu smântână și gem</p>
+              <p class="text-sm text-dark/50">Desert tradițional cu smântână dulce și gem de fructe</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Clătite cu dulceață</p>
+              <p class="text-sm text-dark/50">Clătite subțiri cu dulceață de casă</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-dotted border-dark/15 pb-2">
+            <div>
+              <p class="font-semibold text-dark">Kürtőskalács (Cozonac secuiesc)</p>
+              <p class="text-sm text-dark/50">Specialitate transilvăneană cu zahăr și scorțișoară</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Note -->
+      <div class="bg-light rounded-2xl p-8 text-center">
+        <svg class="w-8 h-8 text-secondary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-dark/60">{t.menu.menuNote}</p>
+        <a href="/contact/" class="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:text-secondary transition-colors">
+          {t.common.contactUs}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/interior/interior-2.webp')"></div>
+    <div class="absolute inset-0 bg-dark/80"></div>
+    <div class="relative z-10 text-center px-5">
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+        {t.home.cta}
+      </h2>
+      <p class="text-white/50 mb-8 max-w-lg mx-auto text-sm">
+        {siteConfig.hours.days} &middot; {siteConfig.hours.open}
+      </p>
+      <a
+        href="/contact/"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-all duration-300 text-lg"
+      >
+        {t.common.reserveTable}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
