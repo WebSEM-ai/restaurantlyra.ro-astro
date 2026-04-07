@@ -1,0 +1,97 @@
+---
+import { siteConfig } from '../../site.config';
+import { getLocalePath, translations, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'ro' } = Astro.props;
+const t = translations[locale];
+
+const copy = locale === 'hu'
+  ? {
+      title: 'Nyitvatartás, amely könnyen követhető és könnyen megjegyezhető',
+      text: 'Ebédre, vacsorára, teraszra vagy egy jól szervezett rendezvényre érkezik? Nálunk már az első pillanatban egyértelmű, mikor vagyunk nyitva és hogyan tud gyorsan foglalni.',
+      daysLabel: 'Napok',
+      diningLabel: 'Étkezés',
+      kitchenLabel: 'Konyha',
+      noteLabel: 'Rendezvények és foglalások',
+      noteText: 'Asztalfoglalásra, családi eseményekre és catering megrendelésekre külön figyelünk, hogy az élmény már az érkezés előtt gördülékeny legyen.',
+    }
+  : {
+      title: 'Program clar, ușor de parcurs dintr-o privire',
+      text: 'Fie că vii pentru prânz, cină, terasă sau un eveniment bine organizat, informațiile importante trebuie să fie rapide și elegante. Aici le vede userul imediat.',
+      daysLabel: 'Zile',
+      diningLabel: 'Servire',
+      kitchenLabel: 'Bucătărie',
+      noteLabel: 'Rezervări și evenimente',
+      noteText: 'Pentru mese în familie, evenimente private sau catering, echipa Lyra răspunde rapid și te ajută să găsești varianta potrivită pentru ocazie.',
+    };
+
+const daysValue = locale === 'hu' ? 'Hétfő - Vasárnap' : siteConfig.hours.days;
+---
+
+<section class="relative overflow-hidden bg-dark py-20 text-white sm:py-24">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(200,149,108,0.22),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_30%)]"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div class="max-w-xl">
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/75 backdrop-blur-sm">
+          {t.common.openHours}
+        </span>
+        <h2 class="mt-6 text-3xl font-heading font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+          {copy.title}
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-white/70">
+          {copy.text}
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href={getLocalePath(locale, '/contact/')}
+            class="inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-[0_10px_30px_rgba(200,149,108,0.28)]"
+          >
+            {t.common.reserveTable}
+          </a>
+          <a
+            href={getLocalePath(locale, '/meniu/')}
+            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/6 px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/12"
+          >
+            {t.common.viewMenu}
+          </a>
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-[1.75rem] border border-white/14 bg-white/7 p-6 backdrop-blur-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">{copy.daysLabel}</p>
+          <p class="mt-4 text-2xl font-heading font-bold text-white">{daysValue}</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-white/14 bg-white/7 p-6 backdrop-blur-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">{copy.diningLabel}</p>
+          <p class="mt-4 text-2xl font-heading font-bold text-white">{siteConfig.hours.open}</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-white/14 bg-white/7 p-6 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">{copy.kitchenLabel}</p>
+          <p class="mt-4 text-2xl font-heading font-bold text-white">{siteConfig.hours.kitchen}</p>
+        </div>
+        <div class="rounded-[1.75rem] border border-white/14 bg-gradient-to-br from-white/10 to-white/5 p-6 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-secondary/90">{copy.noteLabel}</p>
+          <p class="mt-4 text-sm leading-relaxed text-white/72">{copy.noteText}</p>
+          <a
+            href={getLocalePath(locale, '/contact/')}
+            class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-secondary transition-colors"
+          >
+            {t.common.contactUs}
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

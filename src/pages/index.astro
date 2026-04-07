@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import Features from '../components/Features.astro';
+import HoursShowcase from '../components/HoursShowcase.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTABanner from '../components/CTABanner.astro';
 import { siteConfig } from '../../site.config';
@@ -60,37 +61,19 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
 
   <!-- Features -->
   <section class="py-16 bg-light">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-heading font-bold text-dark">{t.home.features}</h2>
-        <div class="mt-4 w-20 h-1 bg-secondary rounded mx-auto" />
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark">{t.home.features}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-dark/60">
+          Bucătărie tradițională, spații pentru evenimente și confort real pentru mesele în familie, întâlnirile cu prietenii sau ocaziile speciale.
+        </p>
+        <div class="mt-5 w-20 h-1 bg-secondary rounded mx-auto" />
       </div>
       <Features locale={locale} />
     </div>
   </section>
 
-  <!-- Schedule & Info -->
-  <section class="py-20 bg-dark text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-4">{t.common.openHours}</h2>
-      <div class="mt-8 flex flex-col sm:flex-row gap-8 justify-center text-white/80">
-        <div>
-          <p class="font-semibold text-secondary">{siteConfig.hours.days}</p>
-          <p class="text-2xl font-heading font-bold mt-2">{siteConfig.hours.open}</p>
-        </div>
-        <div class="hidden sm:block w-px bg-white/20"></div>
-        <div>
-          <p class="font-semibold text-secondary">{locale === 'hu' ? 'Konyha' : 'Bucătărie'}</p>
-          <p class="text-2xl font-heading font-bold mt-2">{siteConfig.hours.kitchen}</p>
-        </div>
-      </div>
-      <div class="mt-10">
-        <a href="/contact/" class="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg">
-          {t.common.reserveTable}
-        </a>
-      </div>
-    </div>
-  </section>
+  <HoursShowcase locale={locale} />
 
   <!-- Gallery Preview -->
   <section class="py-20 bg-white">

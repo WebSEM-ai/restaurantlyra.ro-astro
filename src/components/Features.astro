@@ -8,6 +8,36 @@ interface Props {
 
 const { locale = 'ro' } = Astro.props;
 
+const featureDescriptions = {
+  ro: {
+    chef: 'Rețete românești și transilvănene pregătite cu ingrediente locale și gust familiar.',
+    terrace: 'Terasă aerisită pentru prânzuri liniștite, seri lungi și mese în aer liber.',
+    events: 'Spațiu potrivit pentru aniversări, mese festive și întâlniri private bine organizate.',
+    catering: 'Meniuri adaptate pentru evenimente, livrate cu prezentare atentă și ritm bun.',
+    parking: 'Acces comod și locuri de parcare la îndemână pentru o experiență fără stres.',
+    wifi: 'Conexiune rapidă pentru întâlniri relaxate, rezervări și momentele petrecute aici.',
+    ac: 'Sală confortabilă și răcoroasă în zilele calde, fără să pierzi din atmosfera elegantă.',
+    playground: 'Colț prietenos pentru familii, astfel încât cei mici să se simtă bine la masă.',
+  },
+  hu: {
+    chef: 'Román és erdélyi receptek helyi alapanyagokkal, ismerős és gazdag ízekkel elkészítve.',
+    terrace: 'Levegős terasz nyugodt ebédekhez, hosszú estékhez és kellemes szabadtéri étkezésekhez.',
+    events: 'Ideális helyszín évfordulókhoz, ünnepi vacsorákhoz és jól szervezett magáneseményekhez.',
+    catering: 'Személyre szabott menük rendezvényekre, gondos tálalással és biztos szervezéssel.',
+    parking: 'Kényelmes érkezés és könnyen elérhető parkolás a stresszmentes élményért.',
+    wifi: 'Gyors internet kötetlen találkozókhoz, foglalásokhoz és a nálunk töltött időhöz.',
+    ac: 'Kellemes, hűvös belső tér a meleg napokon is, az elegáns hangulat megtartásával.',
+    playground: 'Családbarát sarok, hogy a gyerekek is jól érezzék magukat az asztalnál.',
+  },
+} as const;
+
+const features = siteConfig.features.map((feature, index) => ({
+  ...feature,
+  title: locale === 'hu' ? feature.nameHu : feature.name,
+  description: featureDescriptions[locale][feature.icon as keyof typeof featureDescriptions.ro],
+  number: String(index + 1).padStart(2, '0'),
+}));
+
 const iconPaths: Record<string, string> = {
   chef: 'M12 2C9.24 2 7 4.24 7 7c0 1.64.8 3.09 2.03 4H5v2h14v-2h-4.03A4.98 4.98 0 0017 7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zM3 15v2h18v-2H3zm2 4v2h14v-2H5z',
   terrace: 'M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v8h-2v-6H8v6H6v-8l6-5.16z',
@@ -20,15 +50,23 @@ const iconPaths: Record<string, string> = {
 };
 ---
 
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-  {siteConfig.features.map((feature) => (
-    <div class="flex flex-col items-center text-center gap-3 p-4">
-      <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-          <path d={iconPaths[feature.icon] || iconPaths.chef} />
-        </svg>
+<div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+  {features.map((feature) => (
+    <article class="group relative overflow-hidden rounded-[1.75rem] border border-dark/10 bg-white p-6 shadow-[0_18px_50px_rgba(15,31,23,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,31,23,0.12)]">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent"></div>
+      <div class="flex items-start justify-between gap-4">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-inner shadow-primary/10 transition-transform duration-300 group-hover:scale-105">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d={iconPaths[feature.icon] || iconPaths.chef} />
+          </svg>
+        </div>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.24em] text-dark/30">{feature.number}</span>
       </div>
-      <p class="text-sm font-semibold text-dark">{locale === 'hu' ? feature.nameHu : feature.name}</p>
-    </div>
+      <div class="mt-5">
+        <h3 class="text-lg font-heading font-bold text-dark">{feature.title}</h3>
+        <p class="mt-3 text-sm leading-relaxed text-dark/60">{feature.description}</p>
+      </div>
+      <div class="mt-6 h-1.5 w-14 rounded-full bg-gradient-to-r from-secondary/70 to-secondary/10"></div>
+    </article>
   ))}
 </div>

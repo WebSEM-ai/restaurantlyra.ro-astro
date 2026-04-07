@@ -8,13 +8,14 @@ const { images, columns = 3 } = Astro.props;
 const colClass = {
   2: 'sm:grid-cols-2',
   3: 'sm:grid-cols-2 lg:grid-cols-3',
-  4: 'sm:grid-cols-2 lg:grid-cols-4',
-  5: 'sm:grid-cols-3 lg:grid-cols-5',
-  6: 'sm:grid-cols-3 lg:grid-cols-6',
+  4: 'sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4',
+  5: 'sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5',
+  6: 'sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6',
 }[columns];
+const gapClass = columns >= 5 ? 'gap-3' : 'gap-4';
 ---
 
-<div class={`grid grid-cols-1 ${colClass} gap-4`}>
+<div class={`grid grid-cols-1 ${colClass} ${gapClass}`}>
   {images.map((img, i) => (
     <button
       class="gallery-item aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group"
