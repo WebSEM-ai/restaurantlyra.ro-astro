@@ -87,15 +87,11 @@ const eventTypes = [
   <section class="py-20 bg-light/50">
     <div class="w-full px-5 sm:px-8 lg:px-12">
       <div class="text-center mb-14">
-        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">
-          {t.events.catering}
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">
-          Galerie
-        </h2>
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">Galerie</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Spațiile Noastre</h2>
         <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
       </div>
-      <Gallery images={[...siteConfig.galleryImages.catering, ...siteConfig.galleryImages.diverse.slice(0, 2)]} columns={3} />
+      <Gallery images={[...siteConfig.galleryImages.interior.slice(0, 5), ...siteConfig.galleryImages.exterior.slice(0, 5)]} columns={5} />
     </div>
   </section>
 

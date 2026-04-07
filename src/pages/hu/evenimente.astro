@@ -44,6 +44,18 @@ const eventTypes = [
     </div>
   </section>
 
+  <!-- Gallery -->
+  <section class="py-20 bg-light/50">
+    <div class="w-full px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">Galéria</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Tereink</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+      <Gallery images={[...siteConfig.galleryImages.interior.slice(0, 5), ...siteConfig.galleryImages.exterior.slice(0, 5)]} columns={5} />
+    </div>
+  </section>
+
   <section class="py-16 bg-primary text-white text-center">
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-4">{t.events.requestQuote}</h2>
