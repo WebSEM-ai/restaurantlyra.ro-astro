@@ -16,6 +16,7 @@ interface Props {
   secondaryCtaText?: string;
   secondaryCtaHref?: string;
   backgroundImage?: string;
+  backgroundPosition?: string;
   backgroundVideo?: string;
   overlay?: boolean;
   compact?: boolean;
@@ -30,6 +31,7 @@ const {
   secondaryCtaText,
   secondaryCtaHref,
   backgroundImage = '/images/hero.webp',
+  backgroundPosition = 'center',
   backgroundVideo,
   overlay = true,
   compact = false,
@@ -104,8 +106,8 @@ const isSlider = slides && slides.length > 1;
         </video>
       ) : (
         <div
-          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={`background-image: url('${backgroundImage}')`}
+          class="absolute inset-0 bg-cover bg-no-repeat"
+          style={`background-image: url('${backgroundImage}'); background-position: ${backgroundPosition}`}
         />
       )}
       {overlay && (
