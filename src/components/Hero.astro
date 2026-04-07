@@ -5,6 +5,7 @@ interface Slide {
   image: string;
   title: string;
   subtitle?: string;
+  position?: string;
 }
 
 interface Props {
@@ -49,8 +50,8 @@ const isSlider = slides && slides.length > 1;
           data-index={i}
         >
           <div
-            class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={`background-image: url('${slide.image}')`}
+            class="absolute inset-0 bg-cover bg-no-repeat"
+            style={`background-image: url('${slide.image}'); background-position: ${slide.position || 'center'}`}
           />
           <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark/70" />
         </div>
