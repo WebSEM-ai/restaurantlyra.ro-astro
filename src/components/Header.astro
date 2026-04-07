@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname.replace(/^\/(ro|hu)/, '') || '/';
 const mainNavItems = [
   { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
   { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
-  { label: 'Catering', href: getLocalePath(locale, '/evenimente/') },
+  { label: 'Catering', href: getLocalePath(locale, '/catering/') },
   { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },
 ];
 
@@ -24,7 +24,7 @@ const allNavItems = [
   { label: t.nav.home, href: getLocalePath(locale, '/') },
   { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
   { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
-  { label: 'Catering', href: getLocalePath(locale, '/evenimente/') },
+  { label: 'Catering', href: getLocalePath(locale, '/catering/') },
   { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },
   { label: t.nav.gallery, href: getLocalePath(locale, '/galerie/') },
   { label: t.nav.contact, href: getLocalePath(locale, '/contact/') },
