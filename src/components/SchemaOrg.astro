@@ -19,10 +19,10 @@ const schema = {
   servesCuisine: ['Romanian', 'Transylvanian'],
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Str. Exemplu nr. 1',
-    addressLocality: 'Târgu Mureș',
-    addressRegion: 'Mureș',
-    postalCode: '540000',
+    streetAddress: siteConfig.contact.streetAddress,
+    addressLocality: siteConfig.contact.locality,
+    addressRegion: siteConfig.contact.region,
+    postalCode: siteConfig.contact.postalCode,
     addressCountry: 'RO',
   },
   geo: {
@@ -31,7 +31,7 @@ const schema = {
     longitude: siteConfig.contact.coordinates.lng,
   },
   image: `https://${siteConfig.domain}${siteConfig.seo.ogImage}`,
-  openingHours: 'Mo-Su 10:00-23:00',
+  openingHours: 'Mo-Su 07:00-22:00',
   priceRange: '$$',
   amenityFeature: [
     { '@type': 'LocationFeatureSpecification', name: 'WiFi Gratuit', value: true },

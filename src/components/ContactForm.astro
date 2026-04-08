@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from '../../site.config';
 import { translations, type Locale } from '../i18n/translations';
 
 interface Props {
@@ -7,13 +8,24 @@ interface Props {
 
 const { locale = 'ro' } = Astro.props;
 const t = translations[locale];
+const formAction =
+  import.meta.env.PUBLIC_CONTACT_FORM_ACTION || `https://formsubmit.co/${siteConfig.contact.email}`;
+const formSubject =
+  locale === 'hu'
+    ? 'Uj uzenet a Restaurant Lyra kapcsolatfelveteli urlapjarol'
+    : 'Mesaj nou din formularul de contact Restaurant Lyra';
 ---
 
 <form
-  action="https://formspree.io/f/YOUR_FORM_ID"
+  action={formAction}
   method="POST"
   class="space-y-6"
 >
+  <input type="hidden" name="_subject" value={formSubject} />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     <div>
       <label for="name" class="block text-sm font-medium text-dark/80 mb-2">{t.contact.form.name} *</label>

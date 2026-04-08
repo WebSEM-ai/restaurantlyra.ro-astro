@@ -20,10 +20,19 @@ export const siteConfig = {
   },
 
   contact: {
-    phone: '+40 xxx xxx xxx',
-    email: 'contact@restaurantlyra.ro',
-    address: 'Str. Exemplu nr. 1, Târgu Mureș, jud. Mureș, România',
-    openHours: '10:00 - 23:00',
+    phone: '0751 585 105',
+    secondaryPhone: '0265 333 090',
+    feedbackPhone: '0749 027 726',
+    email: 'office@restaurantlyra.ro',
+    address: 'E60 KM 7, Corunca 547567, România',
+    streetAddress: 'E60 KM 7',
+    locality: 'Corunca',
+    region: 'Mureș',
+    postalCode: '547567',
+    openHours: 'Restaurant: Luni - Duminică · 07:00 - 22:00 (ultima comandă 21:45)',
+    deliveryHours: 'Livrări: Luni - Duminică · 10:00 - 22:00',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=E60%20KM%207%2C%20Corunca%20547567%2C%20Rom%C3%A2nia&t=m&z=12&output=embed&iwloc=near',
+    directionsUrl: 'https://maps.google.com/?q=E60%20KM%207%2C%20Corunca%20547567%2C%20Rom%C3%A2nia',
     coordinates: { lat: 46.5386, lng: 24.5575 },
   },
 
@@ -52,8 +61,8 @@ export const siteConfig = {
 
   hours: {
     days: 'Luni - Duminică',
-    open: '10:00 - 23:00',
-    kitchen: '11:00 - 22:00',
+    open: '07:00 - 22:00',
+    kitchen: '21:45',
     closed: '-',
   },
 
