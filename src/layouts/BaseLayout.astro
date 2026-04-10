@@ -75,7 +75,7 @@ const canonical = canonicalUrl || Astro.url.href;
   </head>
   <body class="min-h-screen flex flex-col">
     <Header locale={locale} />
-    <main class="flex-1 pb-24 md:pb-0">
+    <main class="flex-1 pb-28 md:pb-0">
       <slot />
     </main>
     <MobileActionBar locale={locale} />
@@ -86,7 +86,7 @@ const canonical = canonicalUrl || Astro.url.href;
     <!-- Scroll to top -->
     <button
       id="scroll-top"
-      class="fixed bottom-24 right-4 z-50 hidden h-12 w-12 rounded-full bg-primary text-white shadow-lg transition-all cursor-pointer hover:bg-primary/90 md:bottom-6 md:right-6"
+      class="fixed bottom-[calc(env(safe-area-inset-bottom)+5.75rem)] right-4 z-50 hidden h-12 w-12 rounded-full bg-primary text-white shadow-lg transition-all cursor-pointer hover:bg-primary/90 md:bottom-6 md:right-6"
       aria-label="Scroll to top"
     >
       <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
