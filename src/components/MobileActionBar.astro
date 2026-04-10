@@ -1,0 +1,39 @@
+---
+import { getLocalePath, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'ro' } = Astro.props;
+
+const copy = locale === 'hu'
+  ? {
+      menu: 'Étlap',
+      reserve: 'Foglalás',
+    }
+  : {
+      menu: 'Meniu',
+      reserve: 'Rezervă',
+    };
+
+const menuHref = getLocalePath(locale, '/meniu/');
+const reserveHref = getLocalePath(locale, '/contact/');
+---
+
+<div class="fixed inset-x-4 bottom-[calc(env(safe-area-inset-bottom)+0.75rem)] z-[54] md:hidden">
+  <div class="grid grid-cols-2 gap-2 rounded-[1.35rem] border border-dark/10 bg-white/96 p-2 shadow-[0_16px_40px_rgba(15,31,23,0.14)] backdrop-blur-xl">
+    <a
+      href={menuHref}
+      class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] border border-primary/14 bg-white px-4 text-sm font-semibold text-primary transition-all duration-300 active:scale-[0.99]"
+    >
+      {copy.menu}
+    </a>
+    <a
+      href={reserveHref}
+      class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] bg-primary px-4 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(26,58,42,0.2)] transition-all duration-300 active:scale-[0.99]"
+    >
+      {copy.reserve}
+    </a>
+  </div>
+</div>
