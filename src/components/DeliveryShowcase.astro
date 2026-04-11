@@ -1,0 +1,165 @@
+---
+import { siteConfig } from '../../site.config';
+import type { Locale } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'ro' } = Astro.props;
+const isHu = locale === 'hu';
+
+const copy = isHu
+  ? {
+      introEyebrow: 'Kiszállítás',
+      introTitle: 'A Lyra ízei otthonra, irodába vagy gyors ebédszünetre.',
+      introText:
+        'A delivery a mindennapi rendelésekre való: gyors, közvetlen és egyszerű. Ha egy ebédet vagy vacsorát szeretnél kiszállítással, innen azonnal tovább tudsz lépni az online rendeléshez.',
+      points: [
+        {
+          title: 'Gyors napi rendelésekhez',
+          text: 'Egyéni vagy kisebb rendeléseknél a delivery a jó választás, amikor az ételnek gyorsan kell megérkeznie.',
+        },
+        {
+          title: '10:00 és 22:00 között',
+          text: 'A kiszállítás minden nap elérhető, így ebédhez és vacsorához is egyszerűen rendelhetsz.',
+        },
+        {
+          title: 'Nem ugyanaz, mint a catering',
+          text: 'A catering rendezvényekre, menütervezéssel és nagyobb volumenre való. A delivery a gyors napi rendelés.',
+        },
+      ],
+      ctaTitle: 'Rendelnél most?',
+      ctaText: 'Nyisd meg az online rendelést, válaszd ki a menüt és küldd el a rendelést néhány lépésben.',
+      primary: 'Online rendelés',
+      secondary: 'Kapcsolat',
+    }
+  : {
+      introEyebrow: 'Delivery',
+      introTitle: 'Gustul Lyra ajunge și acasă, la birou sau la un prânz comandat rapid.',
+      introText:
+        'Delivery-ul este pentru comenzile de zi cu zi: rapid, direct și simplu de plasat. Dacă vrei mâncare Lyra livrată, de aici intri imediat în comanda online.',
+      points: [
+        {
+          title: 'Pentru comenzi rapide, de zi cu zi',
+          text: 'Delivery-ul este alegerea bună pentru prânz, cină sau comenzi punctuale acasă și la birou.',
+        },
+        {
+          title: 'Disponibil zilnic între 10:00 și 22:00',
+          text: 'Programul de livrare este clar și ușor de urmărit, fără pași complicați înainte de comandă.',
+        },
+        {
+          title: 'Diferit de catering',
+          text: 'Cateringul înseamnă meniuri și organizare pentru evenimente. Delivery-ul este comanda rapidă, trimisă direct către tine.',
+        },
+      ],
+      ctaTitle: 'Vrei să comanzi acum?',
+      ctaText: 'Intră în comanda online și alege rapid preparatele pe care vrei să le primești.',
+      primary: 'Comandă Online',
+      secondary: 'Contactează-ne',
+    };
+
+const galleryImages = [
+  { src: '/images/diverse/diverse-1.webp', alt: isHu ? 'Lyra fogas kiszállításhoz' : 'Preparat Lyra pregătit pentru comandă' },
+  { src: '/images/diverse/diverse-2.webp', alt: isHu ? 'Etel rendeléshez' : 'Preparat pentru delivery' },
+  { src: '/images/diverse/diverse-3.webp', alt: isHu ? 'Lyra etelreszlet' : 'Detaliu preparat Lyra' },
+  { src: '/images/diverse/diverse-4.webp', alt: isHu ? 'Rendeles hangulat' : 'Preparat pregătit de livrare' },
+];
+
+const orderHref = siteConfig.delivery.orderUrl;
+const contactHref = locale === 'hu' ? '/hu/contact/' : '/contact/';
+---
+
+<section class="bg-white py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div class="overflow-hidden rounded-[2rem] bg-light shadow-[0_24px_70px_rgba(15,31,23,0.12)]">
+        <img
+          src="/images/diverse/diverse-2.webp"
+          alt={isHu ? 'Lyra kiszállítás' : 'Delivery Lyra'}
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      </div>
+
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center rounded-full border border-secondary/16 bg-secondary/8 px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-secondary">
+          {copy.introEyebrow}
+        </span>
+        <h2 class="mt-5 text-3xl font-heading font-bold leading-tight text-dark sm:text-4xl lg:text-[3rem]">
+          {copy.introTitle}
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-dark/62">
+          {copy.introText}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a
+            href={orderHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-primary/92 hover:shadow-lg"
+          >
+            {copy.primary}
+          </a>
+          <a
+            href={contactHref}
+            class="inline-flex items-center justify-center rounded-full border border-dark/12 px-7 py-3.5 text-sm font-semibold text-dark transition-colors hover:border-secondary hover:text-secondary"
+          >
+            {copy.secondary}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:grid-cols-3">
+      {copy.points.map((item) => (
+        <article class="rounded-[1.8rem] border border-dark/10 bg-white px-6 py-6 shadow-[0_18px_50px_rgba(15,31,23,0.06)]">
+          <h3 class="text-xl font-heading font-bold text-dark">{item.title}</h3>
+          <p class="mt-4 text-sm leading-relaxed text-dark/62">{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {galleryImages.map((image) => (
+        <div class="aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-light shadow-[0_18px_40px_rgba(15,31,23,0.06)]">
+          <img src={image.src} alt={image.alt} class="h-full w-full object-cover" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="relative overflow-hidden py-20">
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/exterior/exterior-3.webp')"></div>
+  <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,31,23,0.9),rgba(15,31,23,0.78))]"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white sm:px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-heading font-bold">{copy.ctaTitle}</h2>
+    <p class="mt-4 text-lg leading-relaxed text-white/72">{copy.ctaText}</p>
+    <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+      <a
+        href={orderHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-full bg-secondary px-8 py-4 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-secondary/92"
+      >
+        {copy.primary}
+      </a>
+      <a
+        href={contactHref}
+        class="inline-flex items-center justify-center rounded-full border border-white/18 bg-white/10 px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/16"
+      >
+        {copy.secondary}
+      </a>
+    </div>
+  </div>
+</section>

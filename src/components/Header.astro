@@ -17,6 +17,7 @@ const localeOptions = [
 // Main nav items visible in header bar
 const mainNavItems = [
   { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
+  { label: locale === 'ro' ? 'Delivery' : 'Kiszállítás', href: getLocalePath(locale, '/delivery/') },
   { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
   { label: 'Catering', href: getLocalePath(locale, '/catering/') },
   { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },
@@ -26,6 +27,7 @@ const mainNavItems = [
 const allNavItems = [
   { label: t.nav.home, href: getLocalePath(locale, '/') },
   { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
+  { label: locale === 'ro' ? 'Delivery' : 'Kiszállítás', href: getLocalePath(locale, '/delivery/') },
   { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
   { label: 'Catering', href: getLocalePath(locale, '/catering/') },
   { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },

@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from '../../site.config';
 import { getLocalePath, type Locale } from '../i18n/translations';
 
 interface Props {
@@ -10,28 +11,39 @@ const { locale = 'ro' } = Astro.props;
 const copy = locale === 'hu'
   ? {
       menu: 'Étlap',
+      directions: 'Útvonal',
       reserve: 'Foglalás',
     }
   : {
       menu: 'Meniu',
+      directions: 'Traseu',
       reserve: 'Rezervă',
     };
 
 const menuHref = getLocalePath(locale, '/meniu/');
+const directionsHref = siteConfig.contact.directionsUrl;
 const reserveHref = getLocalePath(locale, '/contact/');
 ---
 
 <div class="fixed inset-x-0 bottom-0 z-[54] md:hidden">
-  <div class="grid grid-cols-2 gap-2 border-t border-dark/10 bg-white/96 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-14px_36px_rgba(15,31,23,0.12)] backdrop-blur-xl">
+  <div class="grid grid-cols-3 gap-2 border-t border-dark/10 bg-white/96 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-14px_36px_rgba(15,31,23,0.12)] backdrop-blur-xl">
     <a
       href={menuHref}
-      class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] border border-primary/14 bg-white px-4 text-sm font-semibold text-primary transition-all duration-300 active:scale-[0.99]"
+      class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] border border-primary/14 bg-white px-3 text-[0.82rem] font-semibold text-primary transition-all duration-300 active:scale-[0.99]"
     >
       {copy.menu}
     </a>
     <a
+      href={directionsHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] border border-primary/14 bg-white px-3 text-[0.82rem] font-semibold text-primary transition-all duration-300 active:scale-[0.99]"
+    >
+      {copy.directions}
+    </a>
+    <a
       href={reserveHref}
-      class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] bg-primary px-4 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(26,58,42,0.2)] transition-all duration-300 active:scale-[0.99]"
+      class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] bg-primary px-3 text-[0.82rem] font-semibold text-white shadow-[0_10px_26px_rgba(26,58,42,0.2)] transition-all duration-300 active:scale-[0.99]"
     >
       {copy.reserve}
     </a>

@@ -3,6 +3,7 @@ export const translations = {
     nav: {
       home: 'Acasă',
       menu: 'Meniu',
+      delivery: 'Delivery',
       gallery: 'Galerie',
       events: 'Evenimente',
       contact: 'Contact',
@@ -100,6 +101,7 @@ export const translations = {
     nav: {
       home: 'Kezdőlap',
       menu: 'Étlap',
+      delivery: 'Kiszállítás',
       gallery: 'Galéria',
       events: 'Rendezvények',
       contact: 'Kapcsolat',

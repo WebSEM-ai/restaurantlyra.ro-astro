@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import DeliveryShowcase from '../../components/DeliveryShowcase.astro';
+
+const locale = 'hu';
+---
+
+<BaseLayout title="Kiszállítás" locale={locale}>
+  <Hero
+    title="Lyra Kiszállítás"
+    subtitle="Rendeld meg gyorsan a kedvenc fogásokat otthonra vagy az irodába."
+    backgroundImage="/images/diverse/diverse-2.webp"
+    compact
+  />
+
+  <DeliveryShowcase locale={locale} />
+</BaseLayout>

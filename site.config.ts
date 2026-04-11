@@ -2,7 +2,7 @@ export const siteConfig = {
   type: 'restaurant' as const,
   name: 'Restaurant Lyra',
   tagline: 'Savoare transilvăneană autentică în inima Târgu Mureșului',
-  description: 'Restaurant în Târgu Mureș, Transilvania — bucătărie tradițională românească și transilvăneană, atmosferă elegantă, evenimente și catering.',
+  description: 'Restaurant în Târgu Mureș, Transilvania — bucătărie tradițională românească și transilvăneană, atmosferă elegantă, delivery, evenimente și catering.',
   domain: 'restaurantlyra.ro',
   logo: '/images/logo-lyra.png',
 
@@ -32,8 +32,12 @@ export const siteConfig = {
     openHours: 'Restaurant: Luni - Duminică · 07:00 - 22:00 (ultima comandă 21:45)',
     deliveryHours: 'Livrări: Luni - Duminică · 10:00 - 22:00',
     mapEmbedUrl: 'https://maps.google.com/maps?q=E60%20KM%207%2C%20Corunca%20547567%2C%20Rom%C3%A2nia&t=m&z=12&output=embed&iwloc=near',
-    directionsUrl: 'https://maps.google.com/?q=E60%20KM%207%2C%20Corunca%20547567%2C%20Rom%C3%A2nia',
+    directionsUrl: 'https://maps.app.goo.gl/gTe8zG7LTud2qPz48',
     coordinates: { lat: 46.5386, lng: 24.5575 },
+  },
+
+  delivery: {
+    orderUrl: 'https://www.foodbooking.com/ordering/restaurant/menu?restaurant_uid=afeae6a6-f053-419d-ad8d-5f86abd1f791',
   },
 
   social: {
@@ -70,6 +74,7 @@ export const siteConfig = {
     { name: 'Bucătărie Tradițională', nameHu: 'Hagyományos Konyha', icon: 'chef' },
     { name: 'Terasă Exterioară', nameHu: 'Kültéri Terasz', icon: 'terrace' },
     { name: 'Evenimente Private', nameHu: 'Magánrendezvények', icon: 'events' },
+    { name: 'Delivery', nameHu: 'Kiszállítás', icon: 'delivery' },
     { name: 'Catering', nameHu: 'Catering', icon: 'catering' },
     { name: 'Parcare Gratuită', nameHu: 'Ingyenes Parkolás', icon: 'parking' },
     { name: 'WiFi Gratuit', nameHu: 'Ingyenes WiFi', icon: 'wifi' },

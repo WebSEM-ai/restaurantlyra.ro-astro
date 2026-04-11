@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import DeliveryShowcase from '../components/DeliveryShowcase.astro';
+
+const locale = 'ro';
+---
+
+<BaseLayout title="Delivery" locale={locale}>
+  <Hero
+    title="Delivery Lyra"
+    subtitle="Comandă rapid preparatele preferate și primește-le acasă sau la birou."
+    backgroundImage="/images/diverse/diverse-2.webp"
+    compact
+  />
+
+  <DeliveryShowcase locale={locale} />
+</BaseLayout>
