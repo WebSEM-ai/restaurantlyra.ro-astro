@@ -55,9 +55,9 @@ const orderUrl = siteConfig.delivery?.orderUrl || '#';
   </nav>
 
   <!-- Menu sections -->
-  <main class="bg-white">
-    {menuData.categories.map((cat) => (
-      <section id={cat.slug} class="scroll-mt-40 py-14 border-b border-dark/5 last:border-b-0">
+  <main>
+    {menuData.categories.map((cat, idx) => (
+      <section id={cat.slug} class:list={["scroll-mt-40 py-14", idx % 2 === 0 ? "bg-white" : "bg-light/60"]}>
         <div class="max-w-5xl mx-auto px-5">
           <header class="mb-10 flex items-center gap-5">
             {cat.image && (
