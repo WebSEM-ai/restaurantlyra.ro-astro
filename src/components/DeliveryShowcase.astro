@@ -67,7 +67,7 @@ const galleryImages = [
 ];
 
 const orderHref = siteConfig.delivery.orderUrl;
-const contactHref = locale === 'hu' ? '/hu/contact/' : '/contact/';
+const contactHref = ({ hu: '/hu/contact/', en: '/en/contact/', ro: '/contact/' } as const)[locale];
 ---
 
 <section class="bg-white py-20 sm:py-24">

@@ -8,21 +8,15 @@ interface Props {
 
 const { locale = 'ro' } = Astro.props;
 
-const copy = locale === 'hu'
-  ? {
-      menu: 'Étlap',
-      directions: 'Útvonal',
-      reserve: 'Foglalás',
-    }
-  : {
-      menu: 'Meniu',
-      directions: 'Traseu',
-      reserve: 'Rezervă',
-    };
+const copy = ({
+  hu: { menu: 'Étlap', directions: 'Útvonal', reserve: 'Foglalás' },
+  en: { menu: 'Menu', directions: 'Directions', reserve: 'Reserve' },
+  ro: { menu: 'Meniu', directions: 'Traseu', reserve: 'Rezervă' },
+})[locale];
 
 const menuHref = getLocalePath(locale, '/meniu/');
 const directionsHref = siteConfig.contact.directionsUrl;
-const reserveHref = getLocalePath(locale, '/contact/');
+const reserveHref = siteConfig.reservation.url;
 ---
 
 <div class="fixed inset-x-0 bottom-0 z-[54] md:hidden">
@@ -43,6 +37,8 @@ const reserveHref = getLocalePath(locale, '/contact/');
     </a>
     <a
       href={reserveHref}
+      target="_blank"
+      rel="noopener noreferrer"
       class="inline-flex min-h-[3rem] items-center justify-center rounded-[1rem] bg-primary px-3 text-[0.82rem] font-semibold text-white shadow-[0_10px_26px_rgba(26,58,42,0.2)] transition-all duration-300 active:scale-[0.99]"
     >
       {copy.reserve}

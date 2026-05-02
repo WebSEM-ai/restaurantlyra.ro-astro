@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import Features from '../../components/Features.astro';
+import HoursShowcase from '../../components/HoursShowcase.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import VideoTeaser from '../../components/VideoTeaser.astro';
+import { siteConfig } from '../../../site.config';
+import { translations } from '../../i18n/translations';
+
+const locale = 'en';
+const t = translations[locale];
+
+const testimonials = [
+  { name: 'Maria P.', text: 'Excellent food! The traditional dishes are absolutely delicious, and the atmosphere is warm and welcoming. We have come back many times and have never been disappointed.', rating: 5, source: 'Google' },
+  { name: 'Andrei D.', text: 'We hosted a private party here and everything was perfect. The menu was personalized and the service impeccable. Highly recommend!', rating: 5, source: 'Facebook' },
+  { name: 'Elena M.', text: 'The best traditional restaurant in Târgu Mureș. The soups are phenomenal and the sarmale taste like home. The terrace is a lovely bonus in summer.', rating: 5, source: 'TripAdvisor' },
+];
+
+const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
+---
+
+<BaseLayout title={siteConfig.tagline} locale={locale}>
+  <Hero
+    title="Authentic Transylvanian flavors in the heart of Târgu Mureș"
+    subtitle={t.home.heroSubtitle}
+    ctaText={t.common.reserveTable}
+    ctaHref={siteConfig.reservation.url}
+    secondaryCtaText={t.common.viewMenu}
+    secondaryCtaHref="/en/meniu/"
+    slides={[
+      { image: '/images/exterior/exterior-1.webp', title: 'Authentic Transylvanian flavors', subtitle: 'Restaurant with traditional cuisine in Târgu Mureș' },
+      { image: '/images/interior/interior-1.webp', title: 'Traditional Romanian cuisine', subtitle: 'Authentic recipes with fresh ingredients' },
+      { image: '/images/catering/catering-4.webp', title: 'Catering for any occasion', subtitle: 'Custom menus with elegant presentation', position: 'center bottom' },
+      { image: '/images/hero/evenimente.webp', title: 'Unforgettable events', subtitle: 'Weddings, christenings, anniversaries, and corporate events' },
+      { image: '/images/exterior/exterior-10.webp', title: 'A unique terrace', subtitle: 'Relax and enjoy the flavors outdoors', position: 'center center' },
+    ]}
+  />
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mb-6">{t.home.planVisit}</h2>
+        <p class="text-lg text-dark/60 leading-relaxed mb-8">{t.home.intro}</p>
+        <a href="/en/meniu/" class="inline-flex items-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg">
+          {t.common.viewMenu}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <VideoTeaser
+    src="/video/lyra.mp4"
+    poster="/video/lyra-poster.jpg"
+    title="A glimpse inside Restaurant Lyra"
+    subtitle="Video"
+  />
+
+  <section class="py-16 bg-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark">{t.home.features}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-dark/60">
+          Traditional cuisine, spaces fit for events, and real comfort for family meals, gatherings with friends, and special occasions.
+        </p>
+        <div class="mt-5 w-20 h-1 bg-secondary rounded mx-auto" />
+      </div>
+      <Features locale={locale} />
+    </div>
+  </section>
+
+  <HoursShowcase locale={locale} />
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle title={t.home.galleryPreview} />
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {previewImages.map((img) => (
+          <div class="aspect-[4/3] rounded-xl overflow-hidden group">
+            <img src={img.src} alt={img.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/en/galerie/" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors">
+          {t.common.viewGallery}
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials title="What Our Guests Say" testimonials={testimonials} locale={locale} />
+
+  <CTABanner
+    title={t.home.cta}
+    primaryText={t.common.reserveTable}
+    primaryHref={siteConfig.reservation.url}
+    secondaryText={t.common.contactUs}
+    secondaryHref="/en/contact/"
+  />
+</BaseLayout>

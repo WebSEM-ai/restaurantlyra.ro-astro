@@ -9,27 +9,37 @@ interface Props {
 const { locale = 'ro' } = Astro.props;
 const t = translations[locale];
 
-const copy = locale === 'hu'
-  ? {
-      title: 'Nyitvatartás, amely könnyen követhető és könnyen megjegyezhető',
-      text: 'Ebédre, vacsorára, teraszra vagy egy jól szervezett rendezvényre érkezik? Nálunk már az első pillanatban egyértelmű, mikor vagyunk nyitva és hogyan tud gyorsan foglalni.',
-      daysLabel: 'Napok',
-      diningLabel: 'Étkezés',
-      kitchenLabel: 'Utolsó rendelés',
-      noteLabel: 'Rendezvények és foglalások',
-      noteText: 'Asztalfoglalásra, családi eseményekre és catering megrendelésekre külön figyelünk, hogy az élmény már az érkezés előtt gördülékeny legyen.',
-    }
-  : {
-      title: 'Program clar, ușor de parcurs dintr-o privire',
-      text: 'Fie că vii pentru prânz, cină, terasă sau un eveniment bine organizat, informațiile importante trebuie să fie rapide și elegante. Aici le vede userul imediat.',
-      daysLabel: 'Zile',
-      diningLabel: 'Servire',
-      kitchenLabel: 'Ultima comandă',
-      noteLabel: 'Rezervări și evenimente',
-      noteText: 'Pentru mese în familie, evenimente private sau catering, echipa Lyra răspunde rapid și te ajută să găsești varianta potrivită pentru ocazie.',
-    };
+const copy = ({
+  hu: {
+    title: 'Nyitvatartás, amely könnyen követhető és könnyen megjegyezhető',
+    text: 'Ebédre, vacsorára, teraszra vagy egy jól szervezett rendezvényre érkezik? Nálunk már az első pillanatban egyértelmű, mikor vagyunk nyitva és hogyan tud gyorsan foglalni.',
+    daysLabel: 'Napok',
+    diningLabel: 'Étkezés',
+    kitchenLabel: 'Utolsó rendelés',
+    noteLabel: 'Rendezvények és foglalások',
+    noteText: 'Asztalfoglalásra, családi eseményekre és catering megrendelésekre külön figyelünk, hogy az élmény már az érkezés előtt gördülékeny legyen.',
+  },
+  en: {
+    title: 'Clear hours, easy to scan at a glance',
+    text: 'Whether you arrive for lunch, dinner, the terrace, or a well-organized event, the important info should be quick and elegant. Here it shows up immediately.',
+    daysLabel: 'Days',
+    diningLabel: 'Dining',
+    kitchenLabel: 'Last Order',
+    noteLabel: 'Reservations & events',
+    noteText: 'For family meals, private events, or catering, the Lyra team responds quickly and helps you find the right option for the occasion.',
+  },
+  ro: {
+    title: 'Program clar, ușor de parcurs dintr-o privire',
+    text: 'Fie că vii pentru prânz, cină, terasă sau un eveniment bine organizat, informațiile importante trebuie să fie rapide și elegante. Aici le vede userul imediat.',
+    daysLabel: 'Zile',
+    diningLabel: 'Servire',
+    kitchenLabel: 'Ultima comandă',
+    noteLabel: 'Rezervări și evenimente',
+    noteText: 'Pentru mese în familie, evenimente private sau catering, echipa Lyra răspunde rapid și te ajută să găsești varianta potrivită pentru ocazie.',
+  },
+})[locale];
 
-const daysValue = locale === 'hu' ? 'Hétfő - Vasárnap' : siteConfig.hours.days;
+const daysValue = locale === 'hu' ? 'Hétfő - Vasárnap' : locale === 'en' ? 'Monday - Sunday' : siteConfig.hours.days;
 ---
 
 <section class="relative overflow-hidden bg-dark py-20 text-white sm:py-24">
@@ -51,7 +61,9 @@ const daysValue = locale === 'hu' ? 'Hétfő - Vasárnap' : siteConfig.hours.day
 
         <div class="mt-8 flex flex-wrap gap-4">
           <a
-            href={getLocalePath(locale, '/contact/')}
+            href={siteConfig.reservation.url}
+            target="_blank"
+            rel="noopener noreferrer"
             class="inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-[0_10px_30px_rgba(200,149,108,0.28)]"
           >
             {t.common.reserveTable}

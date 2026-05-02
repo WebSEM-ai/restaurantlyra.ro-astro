@@ -6,6 +6,7 @@ import Features from '../components/Features.astro';
 import HoursShowcase from '../components/HoursShowcase.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTABanner from '../components/CTABanner.astro';
+import VideoTeaser from '../components/VideoTeaser.astro';
 import { siteConfig } from '../../site.config';
 import { translations } from '../i18n/translations';
 
@@ -27,12 +28,12 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
     title={siteConfig.tagline}
     subtitle={t.home.heroSubtitle}
     ctaText={t.common.reserveTable}
-    ctaHref="/contact/"
+    ctaHref={siteConfig.reservation.url}
     secondaryCtaText={t.common.viewMenu}
     secondaryCtaHref="/meniu/"
     slides={[
       { image: '/images/exterior/exterior-1.webp', title: 'Savoare transilvăneană autentică', subtitle: 'Restaurant cu bucătărie tradițională în Târgu Mureș' },
-      { image: '/images/interior/interior-1.webp', title: 'Bucătărie tradițională românească', subtitle: 'Preparate autentice cu ingrediente locale proaspete' },
+      { image: '/images/interior/interior-1.webp', title: 'Bucătărie tradițională românească', subtitle: 'Preparate autentice cu ingrediente proaspete' },
       { image: '/images/catering/catering-4.webp', title: 'Catering pentru orice ocazie', subtitle: 'Meniuri personalizate și prezentare elegantă', position: 'center bottom' },
       { image: '/images/hero/evenimente.webp', title: 'Evenimente de neuitat', subtitle: 'Nunți, botezuri, aniversări și evenimente corporate' },
       { image: '/images/exterior/exterior-10.webp', title: 'Terasă cu atmosferă unică', subtitle: 'Relaxare și savoare în aer liber', position: 'center center' },
@@ -58,6 +59,14 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
       </div>
     </div>
   </section>
+
+  <!-- Video Teaser -->
+  <VideoTeaser
+    src="/video/lyra.mp4"
+    poster="/video/lyra-poster.jpg"
+    title="O Privire în Restaurant Lyra"
+    subtitle="Video"
+  />
 
   <!-- Features -->
   <section class="py-16 bg-light">
@@ -142,6 +151,7 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
   <CTABanner
     title={t.home.cta}
     primaryText={t.common.reserveTable}
+    primaryHref={siteConfig.reservation.url}
     secondaryText={t.common.contactUs}
     secondaryHref="/contact/"
   />

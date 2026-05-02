@@ -10,10 +10,11 @@ const { locale = 'ro' } = Astro.props;
 const t = translations[locale];
 const formAction =
   import.meta.env.PUBLIC_CONTACT_FORM_ACTION || `https://formsubmit.co/${siteConfig.contact.email}`;
-const formSubject =
-  locale === 'hu'
-    ? 'Uj uzenet a Restaurant Lyra kapcsolatfelveteli urlapjarol'
-    : 'Mesaj nou din formularul de contact Restaurant Lyra';
+const formSubject = ({
+  hu: 'Uj uzenet a Restaurant Lyra kapcsolatfelveteli urlapjarol',
+  en: 'New message from Restaurant Lyra contact form',
+  ro: 'Mesaj nou din formularul de contact Restaurant Lyra',
+})[locale];
 ---
 
 <form

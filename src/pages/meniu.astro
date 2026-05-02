@@ -116,7 +116,9 @@ const orderUrl = siteConfig.delivery?.orderUrl || '#';
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a
-          href="/contact/"
+          href={siteConfig.reservation.url}
+          target="_blank"
+          rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-8 py-3.5 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-all duration-300"
         >
           {t.common.reserveTable}

@@ -8,29 +8,36 @@ interface Props {
 
 const { locale = 'ro' } = Astro.props;
 const t = translations[locale];
-const currentPath = Astro.url.pathname.replace(/^\/(ro|hu)/, '') || '/';
+const currentPath = Astro.url.pathname.replace(/^\/(ro|hu|en)/, '') || '/';
 const localeOptions = [
   { code: 'ro', label: 'RO', href: getLocalePath('ro', currentPath) },
   { code: 'hu', label: 'HU', href: getLocalePath('hu', currentPath) },
+  { code: 'en', label: 'EN', href: getLocalePath('en', currentPath) },
 ] as const;
+
+const navLabels = {
+  ro: { restaurant: 'Restaurant', delivery: 'Delivery', terrace: 'Terasă', events: 'Evenimente' },
+  hu: { restaurant: 'Étterem', delivery: 'Kiszállítás', terrace: 'Terasz', events: 'Rendezvények' },
+  en: { restaurant: 'Restaurant', delivery: 'Delivery', terrace: 'Terrace', events: 'Events' },
+}[locale];
 
 // Main nav items visible in header bar
 const mainNavItems = [
-  { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
-  { label: locale === 'ro' ? 'Delivery' : 'Kiszállítás', href: getLocalePath(locale, '/delivery/') },
-  { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
+  { label: navLabels.restaurant, href: getLocalePath(locale, '/meniu/') },
+  { label: navLabels.delivery, href: getLocalePath(locale, '/delivery/') },
+  { label: navLabels.terrace, href: getLocalePath(locale, '/galerie/') },
   { label: 'Catering', href: getLocalePath(locale, '/catering/') },
-  { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },
+  { label: navLabels.events, href: getLocalePath(locale, '/evenimente/') },
 ];
 
 // All nav items for hamburger overlay
 const allNavItems = [
   { label: t.nav.home, href: getLocalePath(locale, '/') },
-  { label: locale === 'ro' ? 'Restaurant' : 'Étterem', href: getLocalePath(locale, '/meniu/') },
-  { label: locale === 'ro' ? 'Delivery' : 'Kiszállítás', href: getLocalePath(locale, '/delivery/') },
-  { label: locale === 'ro' ? 'Terasă' : 'Terasz', href: getLocalePath(locale, '/galerie/') },
+  { label: navLabels.restaurant, href: getLocalePath(locale, '/meniu/') },
+  { label: navLabels.delivery, href: getLocalePath(locale, '/delivery/') },
+  { label: navLabels.terrace, href: getLocalePath(locale, '/galerie/') },
   { label: 'Catering', href: getLocalePath(locale, '/catering/') },
-  { label: locale === 'ro' ? 'Evenimente' : 'Rendezvények', href: getLocalePath(locale, '/evenimente/') },
+  { label: navLabels.events, href: getLocalePath(locale, '/evenimente/') },
   { label: t.nav.gallery, href: getLocalePath(locale, '/galerie/') },
   { label: t.nav.contact, href: getLocalePath(locale, '/contact/') },
 ];
@@ -105,7 +112,9 @@ const allNavItems = [
 
           <!-- Reserve CTA -->
           <a
-            href={getLocalePath(locale, '/contact/')}
+            href={siteConfig.reservation.url}
+            target="_blank"
+            rel="noopener noreferrer"
             class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-secondary px-4 py-2.5 text-[0.76rem] font-semibold tracking-wide text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_4px_20px_rgba(233,64,55,0.4)] sm:px-7 sm:py-3 sm:text-sm"
           >
             <span class="relative z-10">{t.common.reserveTable}</span>
@@ -190,7 +199,9 @@ const allNavItems = [
       </div>
 
       <a
-        href={getLocalePath(locale, '/contact/')}
+        href={siteConfig.reservation.url}
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex items-center gap-2 px-8 py-3.5 bg-secondary text-white text-sm font-semibold tracking-wide rounded-full hover:bg-secondary/90 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(233,64,55,0.3)]"
       >
         {t.common.reserveTable}

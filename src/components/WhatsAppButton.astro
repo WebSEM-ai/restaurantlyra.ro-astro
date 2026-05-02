@@ -8,9 +8,11 @@ interface Props {
 
 const { locale = 'ro' } = Astro.props;
 const phone = siteConfig.contact.phone.replace(/[\s+]/g, '');
-const message = locale === 'hu'
-  ? 'Helló! Szeretnék asztalt foglalni.'
-  : 'Bună ziua! Aș dori să fac o rezervare.';
+const message = ({
+  hu: 'Helló! Szeretnék asztalt foglalni.',
+  en: 'Hello! I would like to make a reservation.',
+  ro: 'Bună ziua! Aș dori să fac o rezervare.',
+})[locale];
 const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 ---
 

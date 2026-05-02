@@ -10,7 +10,7 @@ const { locale = 'ro' } = Astro.props;
 
 const featureDescriptions = {
   ro: {
-    chef: 'Rețete românești și transilvănene pregătite cu ingrediente locale și gust familiar.',
+    chef: 'Rețete românești și transilvănene pregătite cu ingrediente proaspete și gust familiar.',
     terrace: 'Terasă aerisită pentru prânzuri liniștite, seri lungi și mese în aer liber.',
     events: 'Spațiu potrivit pentru aniversări, mese festive și întâlniri private bine organizate.',
     delivery: 'Comenzi rapide pentru acasă sau birou, cu preparatele Lyra trimise direct către tine.',
@@ -21,7 +21,7 @@ const featureDescriptions = {
     playground: 'Colț prietenos pentru familii, astfel încât cei mici să se simtă bine la masă.',
   },
   hu: {
-    chef: 'Román és erdélyi receptek helyi alapanyagokkal, ismerős és gazdag ízekkel elkészítve.',
+    chef: 'Román és erdélyi receptek friss alapanyagokkal, ismerős és gazdag ízekkel elkészítve.',
     terrace: 'Levegős terasz nyugodt ebédekhez, hosszú estékhez és kellemes szabadtéri étkezésekhez.',
     events: 'Ideális helyszín évfordulókhoz, ünnepi vacsorákhoz és jól szervezett magáneseményekhez.',
     delivery: 'Gyors kiszállítás otthonra vagy irodába, hogy a Lyra ízei könnyen megérkezzenek.',
@@ -31,11 +31,22 @@ const featureDescriptions = {
     ac: 'Kellemes, hűvös belső tér a meleg napokon is, az elegáns hangulat megtartásával.',
     playground: 'Családbarát sarok, hogy a gyerekek is jól érezzék magukat az asztalnál.',
   },
+  en: {
+    chef: 'Romanian and Transylvanian recipes prepared with fresh ingredients and a familiar taste.',
+    terrace: 'An airy terrace for relaxed lunches, long evenings, and outdoor meals.',
+    events: 'A great space for anniversaries, festive dinners, and well-organized private gatherings.',
+    delivery: 'Quick orders for home or office, with Lyra dishes delivered straight to you.',
+    catering: 'Custom menus for events, delivered with careful presentation and timing.',
+    parking: 'Easy access and convenient parking for a stress-free experience.',
+    wifi: 'Fast connection for relaxed meetings, reservations, and time spent here.',
+    ac: 'A comfortable, cool space on hot days, without losing the elegant atmosphere.',
+    playground: 'A family-friendly corner, so the little ones feel welcome at the table.',
+  },
 } as const;
 
 const features = siteConfig.features.map((feature, index) => ({
   ...feature,
-  title: locale === 'hu' ? feature.nameHu : feature.name,
+  title: locale === 'hu' ? feature.nameHu : locale === 'en' ? feature.nameEn : feature.name,
   description: featureDescriptions[locale][feature.icon as keyof typeof featureDescriptions.ro],
   number: String(index + 1).padStart(2, '0'),
 }));

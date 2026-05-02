@@ -155,6 +155,8 @@ const isSlider = slides && slides.length > 1;
         {ctaText && (
           <a
             href={ctaHref}
+            target={/^https?:\/\//.test(ctaHref) ? '_blank' : undefined}
+            rel={/^https?:\/\//.test(ctaHref) ? 'noopener noreferrer' : undefined}
             class="inline-flex w-full items-center justify-center rounded-lg bg-secondary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-secondary/90 hover:shadow-xl sm:w-auto"
           >
             {ctaText}
@@ -163,6 +165,8 @@ const isSlider = slides && slides.length > 1;
         {secondaryCtaText && secondaryCtaHref && (
           <a
             href={secondaryCtaHref}
+            target={/^https?:\/\//.test(secondaryCtaHref) ? '_blank' : undefined}
+            rel={/^https?:\/\//.test(secondaryCtaHref) ? 'noopener noreferrer' : undefined}
             class="inline-flex w-full items-center justify-center rounded-lg border border-white/30 bg-white/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto"
           >
             {secondaryCtaText}

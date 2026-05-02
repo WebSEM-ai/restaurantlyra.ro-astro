@@ -8,7 +8,7 @@ export const siteConfig = {
 
   locales: {
     default: 'ro' as const,
-    available: ['ro', 'hu'] as const,
+    available: ['ro', 'hu', 'en'] as const,
   },
 
   theme: {
@@ -47,8 +47,8 @@ export const siteConfig = {
   },
 
   reservation: {
-    provider: 'direct',
-    url: '/contact/',
+    provider: 'ialoc',
+    url: 'https://ialoc.ro/restaurante-targu-mures/restaurant-lyra-rezervari-4311?experience=focus',
   },
 
   analytics: {
@@ -71,15 +71,15 @@ export const siteConfig = {
   },
 
   features: [
-    { name: 'Bucătărie Tradițională', nameHu: 'Hagyományos Konyha', icon: 'chef' },
-    { name: 'Terasă Exterioară', nameHu: 'Kültéri Terasz', icon: 'terrace' },
-    { name: 'Evenimente Private', nameHu: 'Magánrendezvények', icon: 'events' },
-    { name: 'Delivery', nameHu: 'Kiszállítás', icon: 'delivery' },
-    { name: 'Catering', nameHu: 'Catering', icon: 'catering' },
-    { name: 'Parcare Gratuită', nameHu: 'Ingyenes Parkolás', icon: 'parking' },
-    { name: 'WiFi Gratuit', nameHu: 'Ingyenes WiFi', icon: 'wifi' },
-    { name: 'Aer Condiționat', nameHu: 'Légkondicionálás', icon: 'ac' },
-    { name: 'Loc de Joacă', nameHu: 'Játszótér', icon: 'playground' },
+    { name: 'Bucătărie Tradițională', nameHu: 'Hagyományos Konyha', nameEn: 'Traditional Cuisine', icon: 'chef' },
+    { name: 'Terasă Exterioară', nameHu: 'Kültéri Terasz', nameEn: 'Outdoor Terrace', icon: 'terrace' },
+    { name: 'Evenimente Private', nameHu: 'Magánrendezvények', nameEn: 'Private Events', icon: 'events' },
+    { name: 'Delivery', nameHu: 'Kiszállítás', nameEn: 'Delivery', icon: 'delivery' },
+    { name: 'Catering', nameHu: 'Catering', nameEn: 'Catering', icon: 'catering' },
+    { name: 'Parcare Gratuită', nameHu: 'Ingyenes Parkolás', nameEn: 'Free Parking', icon: 'parking' },
+    { name: 'WiFi Gratuit', nameHu: 'Ingyenes WiFi', nameEn: 'Free WiFi', icon: 'wifi' },
+    { name: 'Aer Condiționat', nameHu: 'Légkondicionálás', nameEn: 'Air Conditioning', icon: 'ac' },
+    { name: 'Loc de Joacă', nameHu: 'Játszótér', nameEn: 'Playground', icon: 'playground' },
   ],
 
   galleryImages: {

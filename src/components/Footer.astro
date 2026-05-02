@@ -8,22 +8,29 @@ interface Props {
 
 const { locale = 'ro' } = Astro.props;
 const t = translations[locale];
-const footerCopy =
-  locale === 'hu'
-    ? {
-        mobile: 'Mobiltelefon',
-        landline: 'Vezetékes telefon',
-        delivery: 'Kiszállítás',
-        schedule: 'Hétfő - Vasárnap: 07:00 - 22:00',
-        deliveryHours: 'Hétfő - Vasárnap · 10:00 - 22:00',
-      }
-    : {
-        mobile: 'Telefon mobil',
-        landline: 'Telefon fix',
-        delivery: 'Livrări',
-        schedule: `${siteConfig.hours.days}: ${siteConfig.hours.open}`,
-        deliveryHours: 'Luni - Duminică · 10:00 - 22:00',
-      };
+const footerCopy = ({
+  hu: {
+    mobile: 'Mobiltelefon',
+    landline: 'Vezetékes telefon',
+    delivery: 'Kiszállítás',
+    schedule: 'Hétfő - Vasárnap: 07:00 - 22:00',
+    deliveryHours: 'Hétfő - Vasárnap · 10:00 - 22:00',
+  },
+  en: {
+    mobile: 'Mobile',
+    landline: 'Landline',
+    delivery: 'Delivery',
+    schedule: 'Monday - Sunday: 07:00 - 22:00',
+    deliveryHours: 'Monday - Sunday · 10:00 - 22:00',
+  },
+  ro: {
+    mobile: 'Telefon mobil',
+    landline: 'Telefon fix',
+    delivery: 'Livrări',
+    schedule: `${siteConfig.hours.days}: ${siteConfig.hours.open}`,
+    deliveryHours: 'Luni - Duminică · 10:00 - 22:00',
+  },
+})[locale];
 ---
 
 <footer class="bg-dark text-white/80">

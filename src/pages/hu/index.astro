@@ -6,6 +6,7 @@ import Features from '../../components/Features.astro';
 import HoursShowcase from '../../components/HoursShowcase.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import CTABanner from '../../components/CTABanner.astro';
+import VideoTeaser from '../../components/VideoTeaser.astro';
 import { siteConfig } from '../../../site.config';
 import { translations } from '../../i18n/translations';
 
@@ -26,12 +27,12 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
     title="Autentikus erdélyi ízek Marosvásárhely szívében"
     subtitle={t.home.heroSubtitle}
     ctaText={t.common.reserveTable}
-    ctaHref="/hu/contact/"
+    ctaHref={siteConfig.reservation.url}
     secondaryCtaText={t.common.viewMenu}
     secondaryCtaHref="/hu/meniu/"
     slides={[
       { image: '/images/exterior/exterior-1.webp', title: 'Autentikus erdélyi ízek', subtitle: 'Hagyományos konyhával rendelkező étterem Marosvásárhelyen' },
-      { image: '/images/interior/interior-1.webp', title: 'Hagyományos román konyha', subtitle: 'Autentikus receptek friss helyi alapanyagokkal' },
+      { image: '/images/interior/interior-1.webp', title: 'Hagyományos román konyha', subtitle: 'Autentikus receptek friss alapanyagokkal' },
       { image: '/images/catering/catering-4.webp', title: 'Catering minden alkalomra', subtitle: 'Személyre szabott menük elegáns tálalással', position: 'center bottom' },
       { image: '/images/hero/evenimente.webp', title: 'Felejthetetlen rendezvények', subtitle: 'Esküvők, keresztelők, évfordulók és céges események' },
       { image: '/images/exterior/exterior-10.webp', title: 'Egyedülálló terasz', subtitle: 'Pihenés és ízélmény a szabadban', position: 'center center' },
@@ -49,6 +50,13 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
       </div>
     </div>
   </section>
+
+  <VideoTeaser
+    src="/video/lyra.mp4"
+    poster="/video/lyra-poster.jpg"
+    title="Pillantás a Restaurant Lyrába"
+    subtitle="Videó"
+  />
 
   <section class="py-16 bg-light">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,7 +97,7 @@ const previewImages = siteConfig.galleryImages.interior.slice(0, 4);
   <CTABanner
     title={t.home.cta}
     primaryText={t.common.reserveTable}
-    primaryHref="/hu/contact/"
+    primaryHref={siteConfig.reservation.url}
     secondaryText={t.common.contactUs}
     secondaryHref="/hu/contact/"
   />

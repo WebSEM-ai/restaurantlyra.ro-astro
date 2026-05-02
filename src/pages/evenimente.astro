@@ -8,31 +8,33 @@ import { translations } from '../i18n/translations';
 const locale = 'ro';
 const t = translations[locale];
 
+const heroSubtitle = 'Spațiu cu capacitate de până la 70 de persoane — petreceri pentru copii, aniversări, mese festive și nunți restrânse.';
+
 const eventTypes = [
   {
-    title: t.events.privateEvents,
-    description: t.events.privateEventsDesc,
+    title: 'Petreceri pentru Copii',
+    description: 'Aniversări vesele pentru cei mici, cu meniu adaptat, spațiu de joacă și atmosferă caldă. Ne ocupăm de tot ca tu să fii doar invitat.',
     image: '/images/interior/interior-4.webp',
-    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+    icon: 'M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    title: t.events.weddings,
-    description: t.events.weddingsDesc,
+    title: 'Aniversări & Zile de Naștere',
+    description: 'De la mese de familie până la aniversări mai ample — meniu festiv, decor potrivit și un cadru elegant pentru momente speciale.',
     image: '/images/interior/interior-5.webp',
+    icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
+  },
+  {
+    title: 'Nunți Restrânse',
+    description: 'Nunți intime, până la 70 de invitați, în atmosfera caldă a restaurantului. Meniu personalizat și servire atentă pentru cea mai importantă zi.',
+    image: '/images/interior/interior-6.webp',
     icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
   },
   {
-    title: t.events.catering,
-    description: t.events.cateringDesc,
+    title: 'Catering Extern',
+    description: 'Aducem gustul restaurantului la evenimentul tău — meniuri personalizate cu transport, montare și personal de servire incluse.',
     image: '/images/catering/catering-1.webp',
     icon: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z',
     href: '/catering/',
-  },
-  {
-    title: t.events.corporate,
-    description: t.events.corporateDesc,
-    image: '/images/interior/interior-6.webp',
-    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
   },
 ];
 ---
@@ -40,14 +42,39 @@ const eventTypes = [
 <BaseLayout title={t.events.title} locale={locale}>
   <Hero
     title={t.events.heroTitle}
-    subtitle={t.events.subtitle}
+    subtitle={heroSubtitle}
     backgroundImage="/images/exterior/exterior-no-rest-4.webp"
     compact
   />
 
-  <!-- Event Types — 4 column grid -->
+  <!-- Capacity highlight -->
+  <section class="py-12 bg-light/50">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="p-6">
+          <div class="text-4xl font-heading font-bold text-primary mb-2">70</div>
+          <p class="text-sm text-dark/60 uppercase tracking-wider font-semibold">Locuri</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-heading font-bold text-primary mb-2">Personalizat</div>
+          <p class="text-sm text-dark/60 uppercase tracking-wider font-semibold">Meniu pe Eveniment</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-heading font-bold text-primary mb-2">Catering</div>
+          <p class="text-sm text-dark/60 uppercase tracking-wider font-semibold">La Tine sau la Noi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Types -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">Evenimente</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Ce Organizăm Pentru Tine</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {eventTypes.map((event) => (
           <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -99,7 +126,7 @@ const eventTypes = [
   <section class="py-16 bg-primary text-white text-center">
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-4">{t.events.requestQuote}</h2>
-      <p class="text-white/60 mb-8">{t.events.subtitle}</p>
+      <p class="text-white/60 mb-8">Spune-ne despre evenimentul tău și pregătim o ofertă pe măsură.</p>
       <a
         href="/contact/"
         class="inline-flex items-center justify-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg"

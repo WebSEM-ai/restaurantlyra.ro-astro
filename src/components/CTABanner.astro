@@ -18,6 +18,7 @@ const {
 } = Astro.props;
 
 const bgClass = variant === 'dark' ? 'bg-dark' : 'bg-primary';
+const isExternal = (href?: string) => !!href && /^https?:\/\//.test(href);
 ---
 
 <section class={`py-16 ${bgClass} text-white text-center`}>
@@ -27,6 +28,8 @@ const bgClass = variant === 'dark' ? 'bg-dark' : 'bg-primary';
       {primaryText && (
         <a
           href={primaryHref}
+          target={isExternal(primaryHref) ? '_blank' : undefined}
+          rel={isExternal(primaryHref) ? 'noopener noreferrer' : undefined}
           class="inline-flex items-center justify-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg"
         >
           {primaryText}
@@ -35,6 +38,8 @@ const bgClass = variant === 'dark' ? 'bg-dark' : 'bg-primary';
       {secondaryText && secondaryHref && (
         <a
           href={secondaryHref}
+          target={isExternal(secondaryHref) ? '_blank' : undefined}
+          rel={isExternal(secondaryHref) ? 'noopener noreferrer' : undefined}
           class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-lg border border-white/30 hover:bg-white/20 transition-colors text-lg"
         >
           {secondaryText}

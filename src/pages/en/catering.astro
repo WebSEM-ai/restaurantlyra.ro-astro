@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Gallery from '../../components/Gallery.astro';
+import { siteConfig } from '../../../site.config';
+import { translations } from '../../i18n/translations';
+
+const locale = 'en';
+const t = translations[locale];
+
+const cateringMenus = [
+  {
+    name: 'Appetizers Menu',
+    description: 'Ideal for cocktails and receptions',
+    items: [
+      'Lyra traditional platter (cheeses, cold cuts, pickles)',
+      'Assorted bruschetta with roasted vegetables',
+      'Traditional cheese salad',
+      'Mini sandwiches with house pâté',
+      'Fresh vegetable platter with dips',
+    ],
+  },
+  {
+    name: 'Soups',
+    description: 'Traditional soups',
+    items: [
+      'Tripe soup',
+      'Meatball soup',
+      'Chicken soup with homemade noodles',
+      'Seasonal vegetable soup',
+      'Cream of mushroom soup',
+    ],
+  },
+  {
+    name: 'Main Courses',
+    description: 'Mains for events',
+    items: [
+      'Traditional sarmale with sour cream and polenta',
+      'Beef stew with polenta',
+      'Grilled mititei with mustard and bread',
+      'Grilled pork chop with side',
+      'Grilled trout with vegetables',
+      'Boneless chicken thigh from the oven',
+      'Pork shank from the oven',
+      'Moldovan tochitura',
+    ],
+  },
+  {
+    name: 'Sides',
+    description: 'Fresh and traditional sides',
+    items: [
+      'Traditional polenta',
+      'Country potatoes',
+      'French fries',
+      'Vegetable rice',
+      'Seasonal grilled vegetables',
+      'Seasonal salad',
+    ],
+  },
+  {
+    name: 'Desserts',
+    description: 'Traditional sweets',
+    items: [
+      'Papanași with sour cream and jam',
+      'Crepes with homemade jam',
+      'Kürtőskalács',
+      'Assorted homemade pastries',
+      'Apple pie',
+    ],
+  },
+  {
+    name: 'Drinks',
+    description: 'Drinks to round out the meal',
+    items: [
+      'Sparkling / still water',
+      'Natural juices',
+      'Homemade lemonade',
+      'Coffee / Tea',
+      'Selected local wines',
+      'Draft / bottled beer',
+      'Traditional pălincă',
+    ],
+  },
+];
+
+const advantages = [
+  { title: 'Custom Menus', desc: 'We tailor the menu to the event, preferences, and budget.', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01' },
+  { title: 'Varied Cuisine', desc: 'From traditional Romanian dishes to international specialties and vegetarian options.', icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4' },
+  { title: 'Delivery & Service', desc: 'Transport, setup, and service staff included.', icon: 'M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0' },
+  { title: 'Any Occasion', desc: 'Weddings, christenings, anniversaries, corporate, garden parties.', icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+];
+---
+
+<BaseLayout title="Catering" locale={locale}>
+  <Hero
+    title="Catering Services"
+    subtitle="We bring the restaurant flavor to your event — custom menus for any occasion"
+    backgroundImage="/images/catering/catering-4.webp"
+    backgroundPosition="center bottom"
+    ctaText="Request a Quote"
+    ctaHref="/en/contact/"
+    compact
+  />
+
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {advantages.map((adv) => (
+          <div class="text-center p-6">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={adv.icon} /></svg>
+            </div>
+            <h3 class="text-lg font-heading font-bold text-dark mb-2">{adv.title}</h3>
+            <p class="text-sm text-dark/60">{adv.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-light/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">Catering</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Catering Menu</h2>
+        <p class="text-dark/50 mt-3 max-w-xl mx-auto">Menus can be customized. Prices vary based on the number of guests and the event's specifics.</p>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {cateringMenus.map((menu) => (
+          <div class="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="text-xl font-heading font-bold text-dark mb-1">{menu.name}</h3>
+            <p class="text-xs text-secondary font-medium mb-5">{menu.description}</p>
+            <ul class="space-y-2.5">
+              {menu.items.map((item) => (
+                <li class="flex items-start gap-2.5 text-sm text-dark/70">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary/50 mt-1.5 shrink-0"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <p class="text-sm text-dark/50 mb-4">For the full menu and online ordering:</p>
+        <a
+          href="https://www.foodbooking.com/ordering/restaurant/menu?restaurant_uid=afeae6a6-f053-419d-ad8d-5f86abd1f791"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+        >
+          Order Online
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catering Gallery -->
+  <section class="py-20 bg-white">
+    <div class="w-full px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">Gallery</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Catering & Events</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+      <Gallery images={[...siteConfig.galleryImages.catering, ...siteConfig.galleryImages.diverse.slice(0, 6)]} columns={5} />
+    </div>
+  </section>
+
+  <section class="py-16 bg-primary text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-4">Request a Custom Quote</h2>
+      <p class="text-white/60 mb-8">Tell us about your event and we'll prepare a tailored offer.</p>
+      <a href="/en/contact/" class="inline-flex items-center justify-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg">{t.common.contactUs}</a>
+    </div>
+  </section>
+</BaseLayout>

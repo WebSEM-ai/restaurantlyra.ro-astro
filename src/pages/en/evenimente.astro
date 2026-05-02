@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Gallery from '../../components/Gallery.astro';
+import { siteConfig } from '../../../site.config';
+import { translations } from '../../i18n/translations';
+
+const locale = 'en';
+const t = translations[locale];
+
+const heroSubtitle = 'Capacity for up to 70 guests — kids parties, birthdays, festive dinners, and intimate weddings.';
+
+const eventTypes = [
+  {
+    title: 'Kids Parties',
+    description: 'Cheerful birthday parties for the little ones, with a kids menu, play space, and a friendly atmosphere. We take care of everything so you can simply enjoy.',
+    image: '/images/interior/interior-4.webp',
+    icon: 'M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'Anniversaries & Birthdays',
+    description: 'From family meals to bigger birthday celebrations — festive menu, fitting decor, and an elegant setting for special moments.',
+    image: '/images/interior/interior-5.webp',
+    icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
+  },
+  {
+    title: 'Intimate Weddings',
+    description: 'Intimate weddings, up to 70 guests, in the warm atmosphere of the restaurant. Personalized menu and attentive service for the most important day.',
+    image: '/images/interior/interior-6.webp',
+    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+  },
+  {
+    title: 'External Catering',
+    description: 'We bring the restaurant flavor to your event — custom menus with transport, setup, and service staff included.',
+    image: '/images/catering/catering-1.webp',
+    icon: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z',
+    href: '/en/catering/',
+  },
+];
+---
+
+<BaseLayout title={t.events.title} locale={locale}>
+  <Hero title={t.events.heroTitle} subtitle={heroSubtitle} backgroundImage="/images/exterior/exterior-no-rest-4.webp" compact />
+
+  <!-- Capacity highlight -->
+  <section class="py-12 bg-light/50">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="p-6">
+          <div class="text-4xl font-heading font-bold text-primary mb-2">70</div>
+          <p class="text-sm text-dark/60 uppercase tracking-wider font-semibold">Seats</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-heading font-bold text-primary mb-2">Custom</div>
+          <p class="text-sm text-dark/60 uppercase tracking-wider font-semibold">Menu by Event</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-heading font-bold text-primary mb-2">Catering</div>
+          <p class="text-sm text-dark/60 uppercase tracking-wider font-semibold">At Your Place or Ours</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">Events</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">What We Organize for You</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {eventTypes.map((event) => (
+          <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src={event.image} alt={event.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={event.icon} /></svg>
+              </div>
+              <h3 class="text-lg font-heading font-bold text-dark mb-2">{event.title}</h3>
+              <p class="text-sm text-dark/60 leading-relaxed mb-5">{event.description}</p>
+              <a href={event.href || '/en/contact/'} class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                {event.href ? t.common.moreDetails : t.events.requestQuote}
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="py-20 bg-light/50">
+    <div class="w-full px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="text-xs tracking-[0.2em] uppercase text-secondary font-semibold">Gallery</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-dark mt-3">Our Spaces</h2>
+        <div class="mt-4 w-16 h-0.5 bg-secondary/40 mx-auto rounded"></div>
+      </div>
+      <Gallery images={[...siteConfig.galleryImages.interior.slice(0, 5), ...siteConfig.galleryImages.exterior.slice(0, 5)]} columns={5} />
+    </div>
+  </section>
+
+  <section class="py-16 bg-primary text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-4">{t.events.requestQuote}</h2>
+      <p class="text-white/60 mb-8">Tell us about your event and we'll prepare a tailored offer.</p>
+      <a href="/en/contact/" class="inline-flex items-center justify-center px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 transition-colors text-lg">{t.common.contactUs}</a>
+    </div>
+  </section>
+</BaseLayout>
