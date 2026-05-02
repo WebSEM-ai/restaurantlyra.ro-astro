@@ -1,0 +1,883 @@
+{
+  "scrapedAt": "2026-05-02T07:35:55.876Z",
+  "source": "https://www.foodbooking.com/ordering/restaurant/menu?restaurant_uid=afeae6a6-f053-419d-ad8d-5f86abd1f791&client_is_mobile=true",
+  "categoryCount": 21,
+  "itemCount": 104,
+  "categories": [
+    {
+      "title": "Specialități din vită",
+      "image": "/menu/af87da80-009e-4e3a-b447-79d32ed01874_d3.jpg",
+      "items": [
+        {
+          "id": "mi24899109",
+          "name": "Antricot de vită la grătar",
+          "description": "alături de cartofi copți în coajă și rozmarin",
+          "price": "140,00",
+          "image": "/menu/cb88e383-5c41-4b4f-8057-1ac662b77289_d3.jpg"
+        },
+        {
+          "id": "mi24899110",
+          "name": "Muschi de vita cu sos de piper",
+          "description": "pe pat de foccacia, piper murat, frișcă de gătit și piure de cartofi",
+          "price": "160,00",
+          "image": "/menu/d1fa812c-d83c-4947-89b7-ba414dfb4bc8_d3.jpg"
+        },
+        {
+          "id": "mi24899111",
+          "name": "pulled beef burger",
+          "description": "Pulpă de vită afumată, sos BBQ, castraveți murați, cașcaval, chiflă artizanală, cartofi pai, salată coleslaw și sosul casei",
+          "price": "60,00",
+          "image": "/menu/8c41b3ca-5625-409f-a67f-14ff72fd3e0f_d3.jpg"
+        }
+      ],
+      "slug": "specialitati-din-vita"
+    },
+    {
+      "title": "Specialitățile restaurantului",
+      "image": "/menu/6d05a076-edca-4350-819c-c7150501cb4f_d3.jpg",
+      "items": [
+        {
+          "id": "mi23769294",
+          "name": "Ciolan fraged pe pat de varza rosie calita",
+          "description": "Ciolan,varza,frisca de gatit,sos bbq",
+          "price": "83,00",
+          "image": "/menu/d4089066-d749-4071-b81a-564568270e6d_d3.jpg"
+        },
+        {
+          "id": "mi12725492",
+          "name": "Sarmale cu ciolan si mămăliguță prajită sarmale, ciolan de porc, ardei iute, smântână",
+          "description": "",
+          "price": "60,00",
+          "image": "/menu/87fb1c16-1d8f-4d68-9227-e527919b5aef_d3.jpg"
+        },
+        {
+          "id": "mi4477994",
+          "name": "Platou de pui asortat (pentru 2, 3 persoane)",
+          "description": "Aripioare de pui, grujoane de pui, piept de pui la gratar, snitel palermo. cartofi rustici, rondele de ceapa, crochete de mozzarella, sos sweet chilly, sosul casei, usturoi - 1.1kg",
+          "price": "280,00",
+          "image": "/menu/70bbe0cc-a911-490d-a995-05b53e26bb1e_d3.jpg"
+        },
+        {
+          "id": "mi4477997",
+          "name": "Platou a’ la Lyra (pentru 2, 3 persoane)",
+          "description": "Mușchi de porc, costite bbq, ceafa, slanina, cartofi aurii, legume asortate, sos de usturoi, muratura - 800g",
+          "price": "300,00",
+          "image": "/menu/8db1be77-a217-493d-90cb-225990982873_d3.jpg"
+        },
+        {
+          "id": "mi7431878",
+          "name": "Fasii de carnuri mixte usor picante cu cartofi 250 gr.",
+          "description": "fâsii din carnuri de pui, porc, înnabusite în legume (ceapa, usturoi, ardei gras, ciuperci), garnitură cartofi aurii cu ceapa si slanina 90/90/90/100/250 gr.",
+          "price": "58,00",
+          "image": "/menu/feeb7b88-5e0a-4eef-b4b7-73b85c00813d_d3.jpg"
+        },
+        {
+          "id": "mi7431900",
+          "name": "Salată cu Piept de Pui",
+          "description": "Mixt salată, sparanghel, conopidă crocantă, rodie, cremă de avocado, dressing miere, piept de pui",
+          "price": "40,00",
+          "image": "/menu/6cf70703-d15d-4ee3-96dc-767a791dff1e_d3.jpg"
+        }
+      ],
+      "slug": "specialitatile-restaurantului"
+    },
+    {
+      "title": "Platouri",
+      "image": "/menu/277ce57c-6852-4013-9fae-60d427ba3a8f_d3.jpg",
+      "items": [
+        {
+          "id": "mi15083316",
+          "name": "Platou crispy de pui",
+          "description": "20 buc. crispy de pui crocanti (1 kg.) cartofi prajiti 1 kg. 2x sos ketchup, 1x sos usturoi 50/50/50 gr.",
+          "price": "174,00",
+          "image": "/menu/108f2dfd-65e4-4a76-99bc-15454d780e3c_d3.jpg"
+        }
+      ],
+      "slug": "platouri"
+    },
+    {
+      "title": "BBQ PIT BOX Smoker",
+      "image": "/menu/760698c5-ace6-47d5-b53a-ac7f9e6a6b71_d3.jpg",
+      "items": [
+        {
+          "id": "mi10144498",
+          "name": "Felii de Ceafă Afumată",
+          "description": "Ceafa de porc, Cartofi albi, Lapte (Contine: Lapte), Sare de masa, Unt, - Monini",
+          "price": "56,00",
+          "image": "/menu/3784942c-5176-4574-8fde-5c15fe3846aa_d3.jpg"
+        },
+        {
+          "id": "mi7342302",
+          "name": "Costițe Lyra",
+          "description": "Coaste de porc BBQ, Cartofi Wedges*, Varza alba, Sos sweet chili, Jack Daniel's BBQ afumat sos",
+          "price": "75,00",
+          "image": "/menu/6bcdec54-7b80-46db-a4d9-e9e166fce591_d3.jpg"
+        },
+        {
+          "id": "mi7342314",
+          "name": "Pulled Pork in cartof copt",
+          "description": "În cartofi copt și salata de muraturi 300 gr. Preparate BBQ pregătite în cuptorul Pit Box Smoker folosind cărbune de înaltă calitate și afumate cu lemn de fruct pentru o savoare maximă.",
+          "price": "49,00",
+          "image": "/menu/45cd527c-7293-4d2c-b7cc-ff509b7c0234_d3.jpg"
+        },
+        {
+          "id": "mi13500552",
+          "name": "Pulpă de porc Smoker",
+          "description": "Cartofi albi, Pulpa de porc, Ardei copti, Lapte (Contine: Lapte), Untura de porc, Usturoi, Unt, Sare de masa",
+          "price": "59,00",
+          "image": "/menu/d1b76124-9937-439b-bceb-3ea600d5b240_d3.jpg"
+        }
+      ],
+      "slug": "bbq-pit-box-smoker"
+    },
+    {
+      "title": "Lyra's Burgers",
+      "image": "/menu/9ad3d173-c34d-46a7-be00-65c69d7c2aac_d3.jpg",
+      "items": [
+        {
+          "id": "mi4857050",
+          "name": "Meniu Chicken Burger cu cartofi prajiti si sos",
+          "description": "chifla, ceapa caramelizata, salata iceberg, carne de pui, branza cheddar, sos burger",
+          "price": "55,00",
+          "image": "/menu/c11dbabd-1a97-42be-87f6-4622d4755959_d3.jpg"
+        },
+        {
+          "id": "mi14926386",
+          "name": "Meniu crispy burger cu cartofi prajiti si sos",
+          "description": "Piept de pui, Chifla burger, Cascaval (Contine: Lapte), Fulgi de porumb, Oua proaspete (Contine: Oua), Sos sweet chilli Olympia, Smantana (Contine: Lapte), Castraveti murati, Maioneza, Salata verde, Faina alba (Contine: Gluten), Iaurt grecesc, Condimente pentru pui",
+          "price": "48,50",
+          "image": "/menu/d41424f4-56e3-433b-bab0-4baf092f0046_d3.jpg"
+        },
+        {
+          "id": "mi4972179",
+          "name": "Burger Pulled pork cu cartofi prajiti si sos",
+          "description": "chifla, carne de porc, cascaval, castraveti murati, sos barbeque",
+          "price": "48,50",
+          "image": "/menu/2a6e6866-2b9e-497c-8556-be93f7ae1890_d3.jpg"
+        },
+        {
+          "id": "mi4857027",
+          "name": "Meniu eleven burger cu cartofi prajiti si sos",
+          "description": "chifla, ceapa caramelizata, salata iceberg, carne de vita angus, branza cheddar, bacon, sos burger",
+          "price": "64,50",
+          "image": "/menu/241e7f3b-252d-4e11-812d-b227f772b13a_d3.jpg"
+        },
+        {
+          "id": "mi4857039",
+          "name": "Burger Ozn",
+          "description": "salată iceberg, roșii, ceapă, sos burger, parmezan, cartofi, sos brânzeturi",
+          "price": "58,00",
+          "image": "/menu/39a27491-613a-4a88-95c8-5326e604d033_d3.jpg"
+        },
+        {
+          "id": "mi4857063",
+          "name": "Meniu OZN veggie burger cu cartofi prajiti si sos",
+          "description": "chifla, crema de mazare, salata iceberg, burger mazare, ardei jalapeno, branza cheddar, sos burger",
+          "price": "64,00",
+          "image": "/menu/c615a6b4-c7df-4560-ab47-00464a73f94d_d3.jpg"
+        }
+      ],
+      "slug": "lyra-s-burgers"
+    },
+    {
+      "title": "Mâncăruri din zona Ardealului",
+      "image": "/menu/b445a2c8-68a8-479a-adb8-73c2d7e9aa5c_d3.jpg",
+      "items": [
+        {
+          "id": "mi4433285",
+          "name": "Ceafa tiganeasca cu cartofi copti a la lyra",
+          "description": "ceafa de porc, slanina afumata, usturoi, boia",
+          "price": "68,00",
+          "image": "/menu/5aab7156-aa02-406f-8a9c-8be6a7041063_d3.jpg"
+        },
+        {
+          "id": "mi4477666",
+          "name": "Iahnie de fasole cu ciolan afumat și ardei iute",
+          "description": "",
+          "price": "66,00",
+          "image": "/menu/aea1fbfb-cddf-4414-8dcd-9975b0db7ee9_d3.jpg"
+        },
+        {
+          "id": "mi4477683",
+          "name": "Papricas de pui cu mamaliguta",
+          "description": "",
+          "price": "45,00",
+          "image": "/menu/fac0a2cb-93ea-4f74-bed9-a43e82d2d417_d3.jpg"
+        },
+        {
+          "id": "mi21588996",
+          "name": "Fasole bătută cu cârnați de casă fripți în untură și ceapă călită",
+          "description": "",
+          "price": "58,00",
+          "image": "/menu/2f65f4e6-e20c-44c6-a85d-d1a89d066f6e_d3.jpg"
+        }
+      ],
+      "slug": "mancaruri-din-zona-ardealului"
+    },
+    {
+      "title": "Supe | Ciorbe",
+      "image": "/menu/6c9b2cc5-bf45-40b2-b9e9-9e6e54229cca_d3.jpg",
+      "items": [
+        {
+          "id": "mi4433286",
+          "name": "Supa de salata verde cu mamaliguta",
+          "description": "branza, slanina, smantana",
+          "price": "52,00",
+          "image": "/menu/60243dbd-e42f-41b3-8cb0-a1a103f938fc_d3.jpg"
+        },
+        {
+          "id": "mi4433287",
+          "name": "Supa crema de legume",
+          "description": "crutoane de paine 400 ml./100 gr.",
+          "price": "29,00",
+          "image": "/menu/89099841-05d0-46d4-a533-e9df8e815b46_d3.jpg"
+        },
+        {
+          "id": "mi4433288",
+          "name": "Supa de pui cu taitei",
+          "description": "360 ml/40 gr.",
+          "price": "32,00",
+          "image": "/menu/2c83249e-f926-4c26-b78f-5b63d0f77fb9_d3.jpg"
+        },
+        {
+          "id": "mi4477878",
+          "name": "Ciorba de fasole",
+          "description": "cu pulpa de porc afumata 350ml",
+          "price": "32,00",
+          "image": "/menu/6f1b6897-1b3c-4798-8c55-a443a9e78d81_d3.jpg"
+        },
+        {
+          "id": "mi13636716",
+          "name": "Supa Gulyás",
+          "description": "de vițel cu cartofi",
+          "price": "39,00",
+          "image": "/menu/9d6c1a3b-8987-4c48-bf24-363c1dc1ff09_d3.jpg"
+        },
+        {
+          "id": "mi4477917",
+          "name": "Ciorba de burta",
+          "description": "350 ml./120 gr.",
+          "price": "34,00",
+          "image": "/menu/71261dd0-1c48-433e-b146-dec2902ecf23_d3.jpg"
+        },
+        {
+          "id": "mi4477932",
+          "name": "Ciorba taraneasca de vacuta",
+          "description": "morcovi,telina, patrunjel, mazare, rosii, varza si pulpa vita",
+          "price": "34,00",
+          "image": "/menu/d3a57947-18fb-449a-bf6f-a1041c8aed80_d3.jpg"
+        },
+        {
+          "id": "mi23353567",
+          "name": "CIORBĂ DE FASOLE ÎN pită prăjită",
+          "description": "cu ciolan de porc afumat și ceapă roșie",
+          "price": "41,00",
+          "image": "/menu/9081c204-c5e1-439e-bb88-968d2e21c266_d3.jpg"
+        },
+        {
+          "id": "mi4477939",
+          "name": "Ciorba taraneasca de legume",
+          "description": "de legume",
+          "price": "32,00",
+          "image": "/menu/b543d37f-0c7c-4ade-af4e-a2ced0350c97_d3.jpg"
+        },
+        {
+          "id": "mi24899113",
+          "name": "Ciorbă de Lășcuțe cu Ciolan",
+          "description": "legume, lășcuțe, smântână, ou, ciolan, tarhon",
+          "price": "27,00",
+          "image": "/menu/19a47ca7-c920-4370-a458-db409ed3d632_d3.jpg"
+        }
+      ],
+      "slug": "supe-ciorbe"
+    },
+    {
+      "title": "Mic dejun 10:00 - 12:00",
+      "image": "/menu/0b93c507-6ae8-4648-8b02-ab07ba855904_d3.jpg",
+      "items": [
+        {
+          "id": "mi13694182",
+          "name": "Mic dejun Englezesc",
+          "description": "cârnäciori cu cascaval, ochiuri, guanciale, fasole in sos tomate, focaccia făcută în casă",
+          "price": "47,00",
+          "image": "/menu/3d638b73-e6f3-4dab-9e77-5825134b1a07_d3.jpg"
+        },
+        {
+          "id": "mi13694170",
+          "name": "Omleta cu sunca, cascaval",
+          "description": "oua, sunca, ciuperci, cascaval",
+          "price": "35,00",
+          "image": "/menu/bef873df-1f82-4afc-8a3a-833c1bac2093_d3.jpg"
+        },
+        {
+          "id": "mi13694176",
+          "name": "Gustare țărănească",
+          "description": "slanina afumata, ceapa rosie, branza de burduf, rosii, castraveti, carnati, jumari",
+          "price": "35,00",
+          "image": "/menu/25a978ef-e9f1-4b82-acf8-8b2e6cf8593a_d3.jpg"
+        },
+        {
+          "id": "mi13694179",
+          "name": "Duo de Vinete și Zacuscă cu Foccacia Home Made",
+          "description": "",
+          "price": "36,00",
+          "image": "/menu/4c10ae08-99df-4718-a2e8-3f2fa21c6458_d3.jpg"
+        },
+        {
+          "id": "mi21588960",
+          "name": "SPANAC CU OCHIURI ouă, spanac,usturoi, cremă de gătit vegetală",
+          "description": "",
+          "price": "38,00",
+          "image": "/menu/0ffe8d68-26a2-4ad3-be7a-3c779107610c_d3.jpg"
+        },
+        {
+          "id": "mi14135600",
+          "name": "Pita prajita la cuptor pe carbune cu slana si branza de burduf",
+          "description": "",
+          "price": "26,00",
+          "image": "/menu/3bc75ec3-1c51-4b49-ac0a-d392020a109d_d3.jpg"
+        },
+        {
+          "id": "mi21593034",
+          "name": "focaccia CU UNTURĂ, ceapă și pastă de ardei iute",
+          "description": "PÂINE CU UNTURĂ și ceapă",
+          "price": "25,00",
+          "image": "/menu/e9943c09-1eef-4af1-b66e-9f5012c0bcdf_d3.jpg"
+        }
+      ],
+      "slug": "mic-dejun-10-00-12-00"
+    },
+    {
+      "title": "Minuturi din carne de pui",
+      "image": "/menu/004fae3d-322b-4700-b635-5eaf3155c335_d3.jpg",
+      "items": [
+        {
+          "id": "mi4935027",
+          "name": "Borzas",
+          "description": "piept de pui, cartofi, ouă, usturoi, smântână",
+          "price": "47,00",
+          "image": "/menu/fd2d62b9-53f7-45dd-bfe4-2d878338de74_d3.jpg"
+        },
+        {
+          "id": "mi4935034",
+          "name": "Piept de pui a’ la Lyra",
+          "description": "piept de pui la grătar, ciuperci, șuncă, cașcaval",
+          "price": "39,00",
+          "image": "/menu/5dfc7d74-ff56-4ebb-a579-6e6a53b29815_d3.jpg"
+        },
+        {
+          "id": "mi12597336",
+          "name": "Crispy de pui cu cartofi prajiti si sos",
+          "description": "",
+          "price": "42,00",
+          "image": "/menu/9bdd08f8-0943-4938-84e9-a0b0efa807b4_d3.jpg"
+        },
+        {
+          "id": "mi4935044",
+          "name": "PIEPT DE PUI LA foc de cărbune",
+          "description": "",
+          "price": "36,00",
+          "image": "/menu/a92db7e8-d0c5-4650-a0d1-7418999ddfa9_d3.jpg"
+        },
+        {
+          "id": "mi4935055",
+          "name": "Piept de pui Palermo",
+          "description": "piept de pui, ouă cașcaval",
+          "price": "46,00",
+          "image": "/menu/f8c84eda-5109-4440-9a35-e13922f84d83_d3.jpg"
+        },
+        {
+          "id": "mi21588962",
+          "name": "PIEPT DE PUI VIENEZ piept de pui, făină, panada, pesmet",
+          "description": "",
+          "price": "39,00",
+          "image": "/menu/576421c8-5de1-42a0-ad76-541d5ae4f570_d3.jpg"
+        },
+        {
+          "id": "mi21593043",
+          "name": "Cordon Bleu cu Cartofi a la Lyra",
+          "description": "piept de pui , cascaval, suncä, cartofi cu usturoi, panada",
+          "price": "45,00",
+          "image": "/menu/4e6fe06c-d64e-4fef-bd92-b85661fa7fb5_d3.jpg"
+        }
+      ],
+      "slug": "minuturi-din-carne-de-pui"
+    },
+    {
+      "title": "Mâncăruri gătite",
+      "image": "/menu/eb652e94-0055-4d26-ba49-13d2a0dbe218_d3.jpg",
+      "items": [
+        {
+          "id": "mi4877502",
+          "name": "Ciolan a la Lyra",
+          "description": "ciolan, cartofi, cascaval, usturoi, hrean",
+          "price": "55,00",
+          "image": "/menu/1410d158-3d77-4909-97a2-f37385040583_d3.jpg"
+        },
+        {
+          "id": "mi21593084",
+          "name": "carne la garniță",
+          "description": "ceafă de porc, ciolan de porc, cârnați de porc, usturoi, untură condimentată, mămăliguță prăjită, ochi, telemea",
+          "price": "63,00",
+          "image": "/menu/2e29fd3e-3229-4a8a-a912-c81fe97bb517_d3.jpg"
+        },
+        {
+          "id": "mi4478121",
+          "name": "Ficatei de pui cu ceapa",
+          "description": "",
+          "price": "47,00",
+          "image": "/menu/920b66a6-5cd2-45fa-94c2-4ff2e5aad605_d3.jpg"
+        }
+      ],
+      "slug": "mancaruri-gatite"
+    },
+    {
+      "title": "Minuturi din carne de porc si carnuri asortate",
+      "image": "/menu/7b947b8c-2352-49ea-86b3-3d1b2e405e61_d3.jpg",
+      "items": [
+        {
+          "id": "mi21588963",
+          "name": "Ceafa de Porc Țigănească și Cartofi Lyra",
+          "description": "ceafă de porc, mujdeiul casei, boia, slănină prăjită, cartofi cu usturoi si cașcaval",
+          "price": "68,00",
+          "image": "/menu/54dc7397-84f4-47a1-8429-72bc3f127300_d3.jpg"
+        },
+        {
+          "id": "mi4935167",
+          "name": "Mititei cu muștar 4 buc",
+          "description": "4 bucati mititei/mustar/",
+          "price": "38,00",
+          "image": "/menu/e5de4c45-a478-435b-92c6-28e448c86274_d3.jpg"
+        },
+        {
+          "id": "mi21593086",
+          "name": "Snitel Lyra din Cotlet",
+          "description": "cotlet de porc, sos ciuperci, cașcaval cedar, șuncă, cașcaval, sos usturoi, oțet balsamic, panada",
+          "price": "55,00",
+          "image": "/menu/62aa5549-7ee7-468d-ae52-73fc27b15795_d3.jpg"
+        }
+      ],
+      "slug": "minuturi-din-carne-de-porc-si-carnuri-asortate"
+    },
+    {
+      "title": "Peste | Paste",
+      "image": "/menu/26761bc9-8965-4c21-8fbf-bb768e6f4bb0_d3.jpg",
+      "items": [
+        {
+          "id": "mi4478081",
+          "name": "Penne Carbonara",
+          "description": "spaghete, șuncă, smântână, cașcaval",
+          "price": "46,00",
+          "image": "/menu/dc4123d2-4a32-4218-a171-7e389f870cc2_d3.jpg"
+        },
+        {
+          "id": "mi4478088",
+          "name": "Penne Bologneze",
+          "description": "carne de vita tocata, legume, cascaval",
+          "price": "46,00",
+          "image": "/menu/cdfb9d30-51af-4183-8ea9-e75967caeeef_d3.jpg"
+        },
+        {
+          "id": "mi7431568",
+          "name": "FILE DE BIBAN pane cu cartofi petale",
+          "description": "",
+          "price": "55,00",
+          "image": "/menu/925aecec-93f0-4925-bf99-7e9faca4e092_d3.jpg"
+        },
+        {
+          "id": "mi4478082",
+          "name": "PĂSTRĂV proaspăt crescut în munții călimani",
+          "description": "gătit la foc de cărbune, simplu, pentru a păstra gustul autentic de munte, cu mămăliguță prăjită și mujdeiul casei",
+          "price": "65,00",
+          "image": "/menu/51903da0-8f08-4fef-84b8-49a9c28d50d6_d3.jpg"
+        }
+      ],
+      "slug": "peste-paste"
+    },
+    {
+      "title": "Salate | Vegetariene",
+      "image": "/menu/56af825c-a397-40e4-a331-45f2e0df6606_d3.jpg",
+      "items": [
+        {
+          "id": "mi7342453",
+          "name": "Salată Halloumi",
+          "description": "Mixt salată, sparanghel, conopidă crocantă, rodie, cremă de avocado, dressing miere, halloumi",
+          "price": "45,00",
+          "image": "/menu/0f5141e6-86a9-4177-952a-94e8de10d346_d3.jpg"
+        },
+        {
+          "id": "mi4478195",
+          "name": "Papricas de ciuperci cu mamaliguta",
+          "description": "",
+          "price": "42,00",
+          "image": "/menu/9406d665-3457-4156-9120-5ca72546769b_d3.jpg"
+        },
+        {
+          "id": "mi7758356",
+          "name": "Cascaval pane",
+          "description": "cascaval, oua, pesmet",
+          "price": "31,00",
+          "image": "/menu/e455172d-994f-4839-8751-42c0dac5a5b3_d3.jpg"
+        },
+        {
+          "id": "mi21588991",
+          "name": "Camembert cu salata si gem de afine",
+          "description": "camembert, mix salata, morcovi, spanac, masline, sos summer fresh, fulgi de branza",
+          "price": "60,00",
+          "image": "/menu/440e0f6a-66de-446f-b4ce-f3737ae06f7d_d3.jpg"
+        }
+      ],
+      "slug": "salate-vegetariene"
+    },
+    {
+      "title": "Preparate de post",
+      "image": "/menu/4889b3fb-a361-4267-81df-f4c62a242f89_d3.jpg",
+      "items": [
+        {
+          "id": "mi4478299",
+          "name": "Ciorba de legume de post",
+          "description": "",
+          "price": "32,00",
+          "image": "/menu/b081d672-a429-432f-b1d4-4c852168aa2f_d3.jpg"
+        },
+        {
+          "id": "mi4478302",
+          "name": "Ciorba de fasole de post",
+          "description": "",
+          "price": "29,00",
+          "image": "/menu/452b79fb-c7b4-48f9-b828-a43e46986bd8_d3.jpg"
+        },
+        {
+          "id": "mi4478338",
+          "name": "Cartofi prajiti de post",
+          "description": "",
+          "price": "14,00",
+          "image": "/menu/9281ed8b-9fed-47ca-b3d0-04726f0db6ee_d3.jpg"
+        },
+        {
+          "id": "mi17069990",
+          "name": "Iahnie de Fasole cu Snitel Soia",
+          "description": "",
+          "price": "52,00",
+          "image": "/menu/e508a82a-74e4-42dc-8369-591b4ca61201_d3.jpg"
+        },
+        {
+          "id": "mi21593088",
+          "name": "Friptura de ciuperci shitake cu ghimbir si usturoi",
+          "description": "Ciuperci shitake, ghimbir, usturoi, sparanghel, cartofi, ceapa, boia",
+          "price": "50,00",
+          "image": "/menu/b5e3dec0-e764-45d0-a433-2823bf209b41_d3.jpg"
+        }
+      ],
+      "slug": "preparate-de-post"
+    },
+    {
+      "title": "Meniu Copii",
+      "image": "/menu/1ae56182-9769-430c-858c-e9e842d7aaf8_d3.jpg",
+      "items": [
+        {
+          "id": "mi4478213",
+          "name": "Supa de pui pentru copii (meniu copii)",
+          "description": "250 ml./30 gr. carne",
+          "price": "16,00",
+          "image": "/menu/50ba265e-0637-4532-a090-b280ffea043a_d3.jpg"
+        },
+        {
+          "id": "mi4478218",
+          "name": "Supa crema de legume (meniu copii)",
+          "description": "250 ml./30 gr. crutoane",
+          "price": "16,00",
+          "image": "/menu/c18b0e02-6d3e-4d91-9515-461d16f3a9a6_d3.jpg"
+        },
+        {
+          "id": "mi4478255",
+          "name": "Crispy de pui cu cartofi prajiti (meniu copii)",
+          "description": "cu sos de usturoi si ketchup",
+          "price": "33,00",
+          "image": "/menu/ae951718-8c07-41e4-bc4d-36515dea1139_d3.jpg"
+        },
+        {
+          "id": "mi15934131",
+          "name": "Dino de pui cu cartofi prajiti (meniu copii)",
+          "description": "",
+          "price": "33,00",
+          "image": "/menu/429c790b-9cf5-439f-9946-26209e943114_d3.jpg"
+        },
+        {
+          "id": "mi21593091",
+          "name": "Penne Carbonara",
+          "description": "",
+          "price": "33,00",
+          "image": "/menu/9074ff3b-0e5e-4238-942a-767128e74719_d3.jpg"
+        }
+      ],
+      "slug": "meniu-copii"
+    },
+    {
+      "title": "Garnituri",
+      "image": "/menu/9ac24fd2-3667-4cb7-9b56-52e58497571a_d3.jpg",
+      "items": [
+        {
+          "id": "mi4478528",
+          "name": "Cartofi copti a’ la Lyra",
+          "description": "cartofi, sos de usturoi, cascaval",
+          "price": "16,00",
+          "image": "/menu/700db710-a581-487f-93d6-5a87ae6ff412_d3.jpg"
+        },
+        {
+          "id": "mi15934151",
+          "name": "cartofi țărănești",
+          "description": "Cartofi, ceapă, boia, condimente",
+          "price": "15,00",
+          "image": "/menu/9402d805-a42a-48d1-84fe-58de3815738c_d3.jpg"
+        },
+        {
+          "id": "mi4478613",
+          "name": "Cartofi prajiti",
+          "description": "",
+          "price": "15,00",
+          "image": "/menu/ab1d0eb4-5885-4f2d-9523-524ff69af285_d3.jpg"
+        },
+        {
+          "id": "mi4478618",
+          "name": "Mamaliguta prajita",
+          "description": "",
+          "price": "12,00",
+          "image": "/menu/135254a9-b8bc-4f85-9359-1bbb31b82d2d_d3.jpg"
+        },
+        {
+          "id": "mi13694330",
+          "name": "Piure de cartofi",
+          "description": "",
+          "price": "14,00",
+          "image": "/menu/179a4253-6eae-4430-94f9-f776766d0588_d3.jpg"
+        },
+        {
+          "id": "mi23353654",
+          "name": "Legume Mexicane",
+          "description": "mazăre, porumb, morcov, conopidă, unt",
+          "price": "22,00",
+          "image": null
+        },
+        {
+          "id": "mi23353656",
+          "name": "Focaccia Home Made",
+          "description": "aluat bine hidratat, uns cu ulei de măsline extravirgin și rozmarin",
+          "price": "7,50",
+          "image": "/menu/e1f283a7-4eea-414b-94c1-c5c5cfe15edb_d3.jpg"
+        },
+        {
+          "id": "mi4478627",
+          "name": "pituță coaptă",
+          "description": "1 buc.",
+          "price": "4,50",
+          "image": null
+        }
+      ],
+      "slug": "garnituri"
+    },
+    {
+      "title": "Salate | Murături",
+      "image": "/menu/308d8067-9d9d-4f38-8a45-3cb2e9a51af8_d2.jpg",
+      "items": [
+        {
+          "id": "mi4478361",
+          "name": "Salata de varza",
+          "description": "",
+          "price": "13,00",
+          "image": "/menu/473a1dde-e881-4785-852b-bebd8e3f5914_d3.jpg"
+        },
+        {
+          "id": "mi4478373",
+          "name": "Muratura asortata",
+          "description": "",
+          "price": "16,00",
+          "image": "/menu/a5bfc165-21cd-49bb-a293-4585ed3b54eb_d3.jpg"
+        },
+        {
+          "id": "mi4478376",
+          "name": "Varza murata",
+          "description": "",
+          "price": "15,00",
+          "image": "/menu/8f7c0d9b-acd5-4b29-b33b-632e167dd3ee_d3.jpg"
+        },
+        {
+          "id": "mi4478385",
+          "name": "Ardei copti",
+          "description": "",
+          "price": "15,00",
+          "image": "/menu/4c44d43c-ecda-4b6d-816b-6204ec8eedba_d3.jpg"
+        },
+        {
+          "id": "mi4478388",
+          "name": "Ceapa rosie",
+          "description": "",
+          "price": "5,00",
+          "image": "/menu/76d98271-62a9-4073-b54b-18967db5f510_d3.jpg"
+        },
+        {
+          "id": "mi4478399",
+          "name": "Ardei iute murat",
+          "description": "3 mini buc",
+          "price": "4,00",
+          "image": "/menu/395d47cd-8818-4ab7-a779-7de62d88b35f_d3.jpg"
+        },
+        {
+          "id": "mi4478402",
+          "name": "Salata asortata",
+          "description": "",
+          "price": "15,00",
+          "image": "/menu/e25b4de4-742b-4950-8e49-e90221d0d34a_d3.jpg"
+        }
+      ],
+      "slug": "salate-muraturi"
+    },
+    {
+      "title": "Sosuri",
+      "image": "/menu/b4c7377a-a958-487b-b5d4-cb964a48f3dc.jpg",
+      "items": [
+        {
+          "id": "mi4478467",
+          "name": "Sos de Usturoi",
+          "description": "REȚETA CASEI - usturoi, iaurt, lămâie",
+          "price": "10,00",
+          "image": null
+        },
+        {
+          "id": "mi4478503",
+          "name": "Mujdei",
+          "description": "",
+          "price": "10,00",
+          "image": null
+        },
+        {
+          "id": "mi4478513",
+          "name": "Maioneza",
+          "description": "",
+          "price": "7,00",
+          "image": null
+        },
+        {
+          "id": "mi4478516",
+          "name": "Smantana",
+          "description": "",
+          "price": "4,50",
+          "image": null
+        },
+        {
+          "id": "mi4478519",
+          "name": "Ketchup",
+          "description": "",
+          "price": "7,00",
+          "image": null
+        }
+      ],
+      "slug": "sosuri"
+    },
+    {
+      "title": "Desert",
+      "image": "/menu/9c67e499-bc4e-452b-9897-e6244a68beac_d3.jpg",
+      "items": [
+        {
+          "id": "mi4478630",
+          "name": "Papanasi - 1 bucata",
+          "description": "branza de vaca, faina, gem de afine, smantana, zahar pudra, ou",
+          "price": "33,00",
+          "image": "/menu/7ee96ea9-cf4d-4c91-8e1e-8974ba716671_d3.jpg"
+        },
+        {
+          "id": "mi4478646",
+          "name": "Galuste somlay",
+          "description": "blat, budinca de vanilie, ciocolata, stafide, frisca 250 gr.",
+          "price": "35,00",
+          "image": "/menu/93c612cb-4277-4d9a-8308-a9e2f7db7ef9_d3.jpg"
+        },
+        {
+          "id": "mi15934176",
+          "name": "CLĂTITE CU NUTELLA frișcă, zahăr pudră și topping",
+          "description": "",
+          "price": "28,00",
+          "image": "/menu/47369cbd-1cfb-40a8-867a-8dd8d2ffebb0_d3.jpg"
+        },
+        {
+          "id": "mi16238878",
+          "name": "Lapte de pasare",
+          "description": "oua, lapte, zahar, vanilie",
+          "price": "29,00",
+          "image": "/menu/a2223844-5c23-4983-90f6-7dc51055f25f_d3.jpg"
+        }
+      ],
+      "slug": "desert"
+    },
+    {
+      "title": "Platouri 4 persoane | Precomanda 48h",
+      "image": "/menu/8ec83597-6a8b-42bb-a799-452ae25f2a0b_d3.jpg",
+      "items": [
+        {
+          "id": "mi7776842",
+          "name": "Platou Clasic (4 persoane, 1500 gr.) | Precomanda 48h",
+          "description": "Coșulețe cu vinete 6 buc (150 g), mini frigărui cu biluțe de brânză, roșii cherry și măsline 8 buc (200 g), terină de ciolan în cașcaval cedar (200 g), ruladă de mușchi de porc în crustă de piper (200 g), jalapeno pane (120 g), chiftele de porc marinate cu sweet chili și mix de semințe (200 g), rula",
+          "price": "250,00",
+          "image": "/menu/f1f86061-20bb-4dfa-8f9c-c0686007ca1e_d3.jpg"
+        },
+        {
+          "id": "mi9407612",
+          "name": "Platou Vegetarian (4 persoane / 1300 gr.)| Precomanda 48 h",
+          "description": "Coșulețe cu vinete 6 buc (150 g), jalapeno pane (120 g), chiftele vegetale marinate cu sweet chili și mix de semințe (200 g), baghete de mozzarella în pesmet (120 g), mini frigărui de biluțe de brânză, măsline și roșii cherry (200 g), ruladă vegetală în crustă de cașcaval cedar (200 g), mini șnițele",
+          "price": "250,00",
+          "image": "/menu/435c09dd-b275-42cf-b976-e27821ed2a4a_d3.jpg"
+        }
+      ],
+      "slug": "platouri-4-persoane-precomanda-48h"
+    },
+    {
+      "title": "Băuturi",
+      "image": "/menu/fae5cda6-0816-4183-a474-45158cb60b57.jpg",
+      "items": [
+        {
+          "id": "mi14371649",
+          "name": "Limonada",
+          "description": "",
+          "price": "27,00",
+          "image": "/menu/20b52413-577a-4d45-966d-fbf13a023ae7_d3.jpg"
+        },
+        {
+          "id": "mi4479116",
+          "name": "Răcoritoare",
+          "description": "Prigat Nectar de kiwi 250 ml.",
+          "price": "15,50",
+          "image": null
+        },
+        {
+          "id": "mi4478852",
+          "name": "Heineken",
+          "description": "",
+          "price": "17,50",
+          "image": null
+        },
+        {
+          "id": "mi4478891",
+          "name": "Ciuc",
+          "description": "",
+          "price": "17,50",
+          "image": null
+        },
+        {
+          "id": "mi21593101",
+          "name": "Birra Moretii 330",
+          "description": "",
+          "price": "17,50",
+          "image": null
+        },
+        {
+          "id": "mi21593102",
+          "name": "Azuga Nefiltrata 500 Ml",
+          "description": "",
+          "price": "21,50",
+          "image": null
+        }
+      ],
+      "slug": "bauturi"
+    }
+  ]
+}
