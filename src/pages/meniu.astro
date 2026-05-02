@@ -18,25 +18,7 @@ const orderUrl = siteConfig.delivery?.orderUrl || '#';
     compact
   />
 
-  <!-- Sticky category navigation -->
-  <nav class="sticky top-[72px] sm:top-[90px] z-30 bg-white/95 backdrop-blur-md border-b border-dark/10">
-    <div class="max-w-7xl mx-auto px-3 sm:px-5">
-      <ul class="flex gap-1 py-3 overflow-x-auto whitespace-nowrap scrollbar-thin">
-        {menuData.categories.map((c) => (
-          <li>
-            <a
-              href={`#${c.slug}`}
-              class="inline-block px-4 py-1.5 text-sm font-medium text-dark/70 hover:text-primary hover:bg-primary/5 rounded-full transition-colors"
-            >
-              {c.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Order online banner -->
+  <!-- Order online banner (top, non-sticky) -->
   <div class="bg-primary text-white">
     <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between gap-4 flex-wrap">
       <div class="flex items-center gap-3">
@@ -53,6 +35,24 @@ const orderUrl = siteConfig.delivery?.orderUrl || '#';
       </a>
     </div>
   </div>
+
+  <!-- Sticky category navigation (more prominent) -->
+  <nav class="sticky top-[72px] sm:top-[90px] z-30 bg-light border-b-2 border-secondary/30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-5">
+      <ul class="flex gap-2 py-4 overflow-x-auto whitespace-nowrap scrollbar-thin">
+        {menuData.categories.map((c) => (
+          <li>
+            <a
+              href={`#${c.slug}`}
+              class="cat-link inline-block px-5 py-2.5 text-sm sm:text-base font-semibold text-dark bg-white border border-dark/10 rounded-full transition-all hover:bg-secondary hover:text-white hover:border-secondary hover:shadow-md"
+            >
+              {c.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
 
   <!-- Menu sections -->
   <main class="bg-white">
