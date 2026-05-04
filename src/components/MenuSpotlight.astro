@@ -1,0 +1,202 @@
+---
+import type { Locale } from '../i18n/translations';
+import { getLocalePath } from '../i18n/translations';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'ro' } = Astro.props;
+
+const copy = ({
+  ro: {
+    eyebrow: 'Înainte de orice',
+    title: 'Aruncă o privire pe meniul nostru',
+    description:
+      'Catering înseamnă mai mult decât o ofertă — înseamnă să știi ce ajunge pe masă. Răsfoiește meniul restaurantului și descoperă preparatele noastre semnătură: ciorbe ca acasă, fripturi tradiționale, deserturi de care îți va fi dor.',
+    cta: 'Vezi Meniul Restaurantului',
+    secondaryCta: 'Comandă Online',
+    badges: ['Bucătărie tradițională', 'Ingrediente locale', 'Preparate semnătură'],
+  },
+  hu: {
+    eyebrow: 'Mielőtt elkezdenénk',
+    title: 'Vessen egy pillantást a menünkre',
+    description:
+      'A catering több mint egy ajánlat — fontos tudni, mi kerül az asztalra. Lapozza át az étterem menüjét és fedezze fel jellegzetes fogásainkat: hagyományos leveseket, sült húsokat és felejthetetlen desszerteket.',
+    cta: 'Étterem Menüje',
+    secondaryCta: 'Rendeljen Online',
+    badges: ['Hagyományos konyha', 'Helyi alapanyagok', 'Jellegzetes fogások'],
+  },
+  en: {
+    eyebrow: 'Before anything else',
+    title: 'Take a look at our menu',
+    description:
+      'Catering is more than a quote — it is knowing exactly what reaches the table. Browse the restaurant menu and discover our signature dishes: home-style soups, traditional roasts and desserts you will remember.',
+    cta: 'View Restaurant Menu',
+    secondaryCta: 'Order Online',
+    badges: ['Traditional cuisine', 'Local ingredients', 'Signature dishes'],
+  },
+})[locale];
+
+const menuHref = getLocalePath(locale, '/meniu/');
+const orderUrl = 'https://www.foodbooking.com/ordering/restaurant/menu?restaurant_uid=afeae6a6-f053-419d-ad8d-5f86abd1f791';
+---
+
+<section class="menu-spotlight relative overflow-hidden py-20 sm:py-24">
+  <div class="menu-spotlight-bg" aria-hidden="true"></div>
+  <div class="menu-spotlight-grain" aria-hidden="true"></div>
+
+  <div class="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+    <div class="menu-spotlight-eyebrow inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
+      <span class="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse"></span>
+      <span class="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-white/80">{copy.eyebrow}</span>
+    </div>
+
+    <h2 class="mt-6 font-heading text-4xl font-bold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+      {copy.title}
+    </h2>
+
+    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/72 sm:text-lg">
+      {copy.description}
+    </p>
+
+    <div class="mt-10 flex flex-col items-center justify-center gap-5">
+      <a
+        href={menuHref}
+        class="menu-spotlight-cta group relative inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_22px_50px_-12px_rgba(233,64,55,0.7)] transition-transform duration-300 hover:scale-[1.03] sm:px-12 sm:py-6 sm:text-xl"
+      >
+        <span class="menu-spotlight-shine" aria-hidden="true"></span>
+        <svg class="relative z-10 h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7h18M3 12h18M3 17h12" />
+        </svg>
+        <span class="relative z-10">{copy.cta}</span>
+        <svg class="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M13 5l7 7-7 7" />
+        </svg>
+      </a>
+
+      <a
+        href={orderUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-white/65 transition-colors hover:text-white"
+      >
+        <span>{copy.secondaryCta}</span>
+        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 4h6v6" />
+          <path d="M20 4 10 14" />
+          <path d="M19 13v7H4V5h7" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[0.72rem] uppercase tracking-[0.24em] text-white/50">
+      {copy.badges.map((badge, i) => (
+        <>
+          {i > 0 && <span class="hidden sm:inline-block h-1 w-1 rounded-full bg-white/25"></span>}
+          <span>{badge}</span>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-spotlight {
+    background: #0d1f17;
+    isolation: isolate;
+  }
+
+  .menu-spotlight-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(233, 64, 55, 0.28), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(200, 149, 108, 0.18), transparent 55%),
+      radial-gradient(circle at 50% 100%, rgba(26, 58, 42, 0.7), transparent 70%),
+      linear-gradient(180deg, #0d1f17 0%, #112620 100%);
+    z-index: 0;
+  }
+
+  .menu-spotlight-grain {
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .menu-spotlight-cta {
+    position: relative;
+    overflow: hidden;
+    animation: menu-spotlight-bob 3.4s ease-in-out infinite;
+  }
+
+  .menu-spotlight-cta:hover {
+    animation-play-state: paused;
+  }
+
+  .menu-spotlight-cta::before,
+  .menu-spotlight-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    pointer-events: none;
+    animation: menu-spotlight-ring 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .menu-spotlight-cta::after {
+    animation-delay: 1.3s;
+  }
+
+  .menu-spotlight-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent 70%
+    );
+    background-size: 220% 100%;
+    background-position: 200% 0;
+    animation: menu-spotlight-shine 3.5s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes menu-spotlight-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes menu-spotlight-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.65;
+    }
+    80%, 100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+
+  @keyframes menu-spotlight-shine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-spotlight-cta,
+    .menu-spotlight-cta::before,
+    .menu-spotlight-cta::after,
+    .menu-spotlight-shine {
+      animation: none;
+    }
+  }
+</style>

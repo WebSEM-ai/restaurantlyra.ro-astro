@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import Gallery from '../../components/Gallery.astro';
+import MenuSpotlight from '../../components/MenuSpotlight.astro';
 import { siteConfig } from '../../../site.config';
 import { translations } from '../../i18n/translations';
 
@@ -97,10 +98,15 @@ const advantages = [
     subtitle="Az étterem ízét az Ön rendezvényére visszük — személyre szabott menük minden alkalomra"
     backgroundImage="/images/catering/catering-4.webp"
     backgroundPosition="center bottom"
-    ctaText="Ajánlatkérés"
-    ctaHref="/hu/contact/"
+    ctaText="Étlap Megtekintése"
+    ctaHref="/hu/meniu/"
+    secondaryCtaText="Ajánlatkérés"
+    secondaryCtaHref="/hu/contact/"
+    ctaSpotlight
     compact
   />
+
+  <MenuSpotlight locale={locale} />
 
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

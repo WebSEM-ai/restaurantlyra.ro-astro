@@ -21,6 +21,7 @@ interface Props {
   overlay?: boolean;
   compact?: boolean;
   slides?: Slide[];
+  ctaSpotlight?: boolean;
 }
 
 const {
@@ -36,6 +37,7 @@ const {
   overlay = true,
   compact = false,
   slides,
+  ctaSpotlight = false,
 } = Astro.props;
 
 const isSlider = slides && slides.length > 1;
@@ -151,15 +153,31 @@ const isSlider = slides && slides.length > 1;
     )}
 
     {(ctaText || secondaryCtaText) && (
-      <div class="flex flex-col justify-center gap-4 sm:flex-row">
+      <div class:list={['flex flex-col justify-center gap-4 sm:flex-row', ctaSpotlight && 'sm:items-center']}>
         {ctaText && (
           <a
             href={ctaHref}
             target={/^https?:\/\//.test(ctaHref) ? '_blank' : undefined}
             rel={/^https?:\/\//.test(ctaHref) ? 'noopener noreferrer' : undefined}
-            class="inline-flex w-full items-center justify-center rounded-lg bg-secondary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-secondary/90 hover:shadow-xl sm:w-auto"
+            class:list={[
+              'group relative inline-flex w-full items-center justify-center gap-3 rounded-lg bg-secondary text-white shadow-lg transition-all hover:bg-secondary/90 hover:shadow-xl sm:w-auto font-semibold',
+              ctaSpotlight
+                ? 'hero-cta-spotlight rounded-full px-10 py-5 text-xl sm:text-2xl tracking-wide'
+                : 'px-8 py-4 text-lg',
+            ]}
           >
-            {ctaText}
+            {ctaSpotlight && (
+              <>
+                <span class="hero-cta-pulse-ring"></span>
+                <span class="hero-cta-pulse-ring hero-cta-pulse-ring--delay"></span>
+              </>
+            )}
+            <span class="relative z-10">{ctaText}</span>
+            {ctaSpotlight && (
+              <svg class="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            )}
           </a>
         )}
         {secondaryCtaText && secondaryCtaHref && (
@@ -185,6 +203,56 @@ const isSlider = slides && slides.length > 1;
     </div>
   )}
 </section>
+
+<style>
+  .hero-cta-spotlight {
+    box-shadow:
+      0 18px 38px -12px rgba(233, 64, 55, 0.65),
+      0 8px 24px -8px rgba(0, 0, 0, 0.35);
+    animation: hero-cta-bob 3.6s ease-in-out infinite;
+  }
+
+  .hero-cta-spotlight:hover {
+    animation-play-state: paused;
+  }
+
+  .hero-cta-pulse-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid rgba(233, 64, 55, 0.55);
+    pointer-events: none;
+    animation: hero-cta-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    z-index: 0;
+  }
+
+  .hero-cta-pulse-ring--delay {
+    animation-delay: 1.2s;
+  }
+
+  @keyframes hero-cta-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes hero-cta-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    80%, 100% {
+      transform: scale(1.45);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-cta-spotlight,
+    .hero-cta-pulse-ring {
+      animation: none;
+    }
+  }
+</style>
 
 {isSlider && (
   <script>
